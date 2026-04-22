@@ -1,0 +1,2683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Calbright Staff Portal — Career Partnership Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-red: #D34508;
+  --color-blue-purple: #001E5A;
+  --color-yellow: #F5BB11;
+  --color-dark-yellow: #FF9D26;
+  --color-darker-gray: #333333;
+  --color-dark-gray: #555555;
+  --color-normal-gray: #747474;
+  --color-light-gray: #999999;
+  --color-lighter-gray: #CCCCCC;
+  --color-disabled-gray: #DDDDDD;
+  --color-button-gray: #E0E1E2;
+  --color-brightest-gray: #F8F8F9;
+  --color-white: #FFFFFF;
+  --color-light-cream: #FFF7E8;
+  --color-normal-green: #0DA820;
+  --color-dark-green: #0A8A19;
+  --color-dark-red: #BE5143;
+  --color-nav-tan: #F2DFC2;
+  --color-actions-tan: #EFCD9F;
+  --color-page-bg: #FFF7E8;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  font-family: 'Lato', sans-serif;
+  color: var(--color-darker-gray);
+  background: var(--color-page-bg);
+  font-size: 14px;
+  line-height: 1.5;
+}
+a { color: var(--color-red); text-decoration: none; cursor: pointer; }
+a:hover { text-decoration: underline; }
+button { font-family: inherit; cursor: pointer; }
+
+/* ============ TOP BAR ============ */
+.topbar {
+  background: var(--color-nav-tan);
+  padding: 12px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Lato', sans-serif;
+}
+.logo-text {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--color-blue-purple);
+  letter-spacing: 1px;
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+}
+.logo-text .star {
+  color: var(--color-red);
+  font-size: 20px;
+  margin: 0 1px;
+  position: relative;
+  top: -2px;
+}
+.logo-sub {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--color-blue-purple);
+  letter-spacing: 5px;
+  margin-top: 2px;
+  text-align: center;
+}
+.search-wrap {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 64px);
+  max-width: 1376px;
+}
+.search {
+  width: 100%;
+  padding: 10px 24px;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 999px;
+  font-size: 14px;
+  background: white;
+  font-family: inherit;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.search::placeholder { color: var(--color-light-gray); }
+.search:focus { outline: none; border-color: #D34508; box-shadow: 0 0 0 3px rgba(211, 69, 8, 0.2); }
+.topbar-right { display: flex; align-items: center; gap: 14px; justify-content: flex-end; }
+.icon-grid {
+  width: 34px; height: 34px;
+  background: white;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-dark-gray);
+  font-size: 14px;
+}
+.user-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #F5BB11, #D34508);
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* ============ LAYOUT ============ */
+.page { max-width: 1440px; margin: 0 auto; padding: 20px 32px 60px; }
+
+/* ============ STUDENT HEADER ============ */
+.student-header {
+  background: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  padding: 20px 28px;
+  margin-bottom: 16px;
+}
+.student-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+.student-avatar {
+  width: 64px; height: 64px;
+  border-radius: 8px;
+  background: #C8E6E1;
+  color: var(--color-blue-purple);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900;
+  font-size: 22px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.student-avatar::before {
+  content: '👩🏻';
+  font-size: 42px;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -35%);
+}
+.student-name-row { display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; flex: 1; }
+.student-name-col { display: flex; flex-direction: column; gap: 2px; }
+.student-name { font-size: 24px; font-weight: 900; color: var(--color-darker-gray); line-height: 1.15; }
+.student-pronoun { color: var(--color-normal-gray); font-size: 13px; }
+.badges { display: flex; gap: 8px; flex-wrap: wrap; margin-left: 4px; align-self: flex-start; padding-top: 4px; }
+.badge {
+  padding: 4px 14px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+}
+.badge.red { background: #C8382E; }
+.badge.yellow { background: #E8A319; }
+.badge.teal { background: #1B9E8F; }
+.badge.blue { background: #2E6ED4; }
+.status-right { text-align: right; flex-shrink: 0; }
+.status-ontrack { color: var(--color-normal-green); font-weight: 700; font-size: 14px; }
+.journey-link { color: var(--color-darker-gray); font-size: 12px; display: block; margin-top: 4px; }
+.journey-link::before { content: '📍 '; }
+
+.student-divider { border-top: 1px solid #EEE; margin: 16px 0 14px; }
+.student-meta {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  font-size: 13px;
+  color: var(--color-darker-gray);
+}
+.student-meta > div { min-width: 0; }
+.student-meta .label {
+  color: var(--color-normal-gray);
+  font-size: 12px;
+  font-weight: 400;
+  display: block;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.student-meta .value {
+  font-size: 13px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.student-meta > div { position: relative; }
+.student-meta > div[data-tip]:hover::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 0;
+  top: calc(100% + 6px);
+  background: #222;
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  white-space: normal;
+  width: max-content;
+  max-width: 360px;
+  line-height: 1.4;
+  z-index: 50;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.student-meta > div[data-tip]:last-child:hover::after {
+  left: auto;
+  right: 0;
+}
+.student-meta > div[data-tip]:last-child:hover::before {
+  left: auto;
+  right: 12px;
+}
+.student-meta > div[data-tip]:hover::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 100%;
+  border: 5px solid transparent;
+  border-bottom-color: #222;
+  z-index: 51;
+  pointer-events: none;
+}
+
+/* ============ GRID ============ */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 16px;
+  align-items: start;
+}
+
+/* ============ CARDS / SECTIONS ============ */
+.card, .section {
+  background: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.card-title-bar {
+  padding: 14px 20px;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-blue-purple);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #F0F0F0;
+}
+.card-body { padding: 18px 20px; }
+
+/* Details card wrapper (contains many sections) */
+.details-card {
+  background: var(--color-white);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.details-card .details-title {
+  padding: 16px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-blue-purple);
+}
+.details-card > .section {
+  background: transparent;
+  border-radius: 0;
+  margin: 0 20px 12px;
+  border: none;
+  overflow: visible;
+}
+.details-card > .section:last-child { margin-bottom: 20px; }
+
+/* Collapsible section (left column) */
+.section-header {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  transition: background 200ms ease;
+  background: #F0F0F0;
+  border-radius: 6px;
+}
+.section-header:hover { background: #E8E8E8; }
+.section-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-blue-purple);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.chev { color: var(--color-darker-gray); font-size: 11px; transition: transform 300ms ease; display: inline-block; }
+.section-header.collapsed .chev { transform: rotate(-90deg); }
+.section-header.collapsed { border-bottom: none; }
+.section-header-right { font-size: 13px; color: var(--color-normal-gray); display: flex; align-items: center; gap: 10px; }
+.edit-link { color: var(--color-darker-gray); font-size: 13px; font-weight: 400; }
+.edit-link::before { content: '✎ '; color: var(--color-normal-gray); }
+.section-body {
+  padding: 20px 4px 8px;
+  max-height: 5000px;
+  overflow: hidden;
+  transition: max-height 400ms ease, padding 300ms ease;
+}
+.section-body.hidden {
+  max-height: 0;
+  padding: 0 4px;
+}
+
+/* ============ FIELD GRIDS ============ */
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 18px 24px;
+  margin-bottom: 8px;
+}
+.field-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.field-grid.cols-5 { grid-template-columns: repeat(5, 1fr); }
+.field-label {
+  font-size: 12px;
+  color: var(--color-normal-gray);
+  margin-bottom: 4px;
+}
+.field-value {
+  font-size: 14px;
+  color: var(--color-darker-gray);
+  font-weight: 400;
+}
+.field-value.bold { font-weight: 700; }
+.field-value.red { color: var(--color-red); font-weight: 700; }
+
+.subhead {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-blue-purple);
+  margin: 16px 0 10px;
+  padding-top: 14px;
+  border-top: 1px solid #F0F0F0;
+}
+.subhead:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+.subhead.plain { color: var(--color-darker-gray); text-decoration: underline; }
+
+/* ============ IMPORTANT DATES ============ */
+.important-dates-card {
+  background: var(--color-white);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin-bottom: 16px;
+}
+.important-dates-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-blue-purple);
+  margin-bottom: 10px;
+}
+.important-dates-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+/* ============ TABLES ============ */
+table { width: 100%; border-collapse: collapse; }
+th {
+  background: var(--color-brightest-gray);
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: left;
+  padding: 10px 16px;
+  color: var(--color-dark-gray);
+}
+td {
+  padding: 12px 16px;
+  border: none;
+  font-size: 14px;
+  color: var(--color-darker-gray);
+}
+
+.course-table th.term-start,
+.course-table td.term-start { border-left: 1px solid #E6E6E6; }
+
+.sub-toggle .sub-chev { display: inline-block; transition: transform 300ms ease; font-size: 10px; margin-right: 4px; }
+.sub-toggle.collapsed .sub-chev { transform: rotate(-90deg); }
+.sub-body { overflow: hidden; max-height: 5000px; transition: max-height 400ms ease; }
+.sub-body.hidden { max-height: 0; }
+.course-table tbody td { border-bottom: 1px solid #E6E6E6; }
+.course-table thead th { border-bottom: 1px solid #E6E6E6; }
+
+.risk-high { color: var(--color-dark-red); font-weight: 700; }
+.risk-high::before { content: '● '; color: var(--color-dark-red); }
+
+/* ============ BUTTONS ============ */
+.btn {
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 200ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-primary { background: var(--color-red); color: white; }
+.btn-primary:hover { background: #b83a06; }
+.btn-secondary { background: var(--color-white); border: 1px solid var(--color-disabled-gray); color: var(--color-darker-gray); }
+.btn-secondary:hover { background: var(--color-brightest-gray); }
+.btn-outline { background: transparent; color: var(--color-red); border: 1px solid var(--color-red); }
+.btn-outline:hover { background: var(--color-red); color: white; }
+.btn-text { background: none; border: none; color: var(--color-normal-gray); }
+.btn-text:hover { color: var(--color-darker-gray); }
+.btn-sm { padding: 5px 12px; font-size: 12px; }
+
+/* ============ RIGHT COLUMN ============ */
+.card-header-dark {
+  background: var(--color-blue-purple);
+  color: white;
+  padding: 12px 18px;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-header-light {
+  padding: 14px 18px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-blue-purple);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* (legacy row styles — retained for reuse) */
+.partner-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.partner-row:last-child { border-bottom: none; }
+.partner-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: var(--color-brightest-gray);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.partner-info { flex: 1; min-width: 0; }
+.partner-name { font-weight: 700; font-size: 13px; margin-bottom: 2px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.partner-activity { font-size: 11px; color: var(--color-normal-gray); }
+.partner-view { font-size: 12px; color: var(--color-red); font-weight: 700; flex-shrink: 0; }
+.partner-view:hover { text-decoration: underline; }
+
+.status-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.status-pill.green { background: #e8f7ea; color: var(--color-dark-green); }
+.status-pill.red { background: #fbe9e7; color: var(--color-dark-red); }
+.status-pill.teal { background: #e0f2f1; color: #00695c; }
+.status-pill.blue { background: #e3e9f5; color: var(--color-blue-purple); }
+
+/* Tier Badges — Career Partnership */
+.tier-badge { display: inline-block; padding: 2px 7px; border-radius: 3px; font-size: 10px; font-weight: 900; letter-spacing: 0.3px; color: #fff; }
+.tier-l1 { background: #0DA820; }
+.tier-l2 { background: #001E5A; }
+.tier-l3 { background: #FF9D26; }
+
+/* Opportunity / Referral rows */
+.opp-row { padding: 10px 0; border-bottom: 1px solid var(--color-brightest-gray); }
+.opp-row:last-child { border-bottom: none; }
+.referral-row { padding: 10px 0; border-bottom: 1px solid var(--color-brightest-gray); }
+.referral-row:last-child { border-bottom: none; }
+
+/* Match score */
+.match-score { font-weight: 700; }
+.match-strong { color: #0DA820; }
+.match-weak { color: #D34508; }
+
+/* Readiness Score bars */
+.readiness-row { display: grid; grid-template-columns: 140px 52px 1fr; gap: 10px; align-items: center; padding: 6px 0; font-size: 12px; }
+.readiness-label { color: var(--color-dark-gray); }
+.readiness-value { font-weight: 700; color: var(--color-darker-gray); text-align: right; }
+.readiness-bar { height: 6px; background: var(--color-brightest-gray); border-radius: 3px; overflow: hidden; }
+.readiness-fill { height: 100%; border-radius: 3px; }
+
+/* Risk Indicators */
+.risk-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+.risk-stat {
+  text-align: center;
+  padding: 14px 8px;
+  background: #fff5f2;
+  border: 1px solid #ffd6cc;
+  border-radius: 4px;
+}
+.risk-value { font-size: 24px; font-weight: 900; color: var(--color-dark-red); line-height: 1; }
+.risk-value.small { font-size: 13px; padding: 4px 0; }
+.risk-label { font-size: 10px; color: var(--color-normal-gray); text-transform: uppercase; font-weight: 700; margin-top: 6px; letter-spacing: 0.3px; }
+
+/* Messages */
+.message {
+  padding: 12px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  border: 1px solid;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+.message.info { background: var(--color-light-cream); border-color: var(--color-yellow); color: #5c3d00; }
+.message.warning { background: #fff8e1; border-color: var(--color-dark-yellow); color: #7a4a00; }
+.message.success { background: #f0fff4; border-color: var(--color-normal-green); color: var(--color-dark-green); }
+.message.error { background: #fff5f5; border-color: var(--color-dark-red); color: var(--color-dark-red); }
+
+/* Activity */
+.activity-item { display: flex; gap: 12px; padding: 10px 0; font-size: 13px; position: relative; }
+.activity-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.activity-item::before {
+  content: '';
+  position: absolute;
+  left: 4.5px;
+  top: 15px;
+  bottom: -10px;
+  width: 1px;
+  background: #D9D4E6;
+  z-index: 0;
+}
+.activity-item.no-line::before,
+.activity-item:last-child::before { display: none; }
+.activity-body { flex: 1; }
+.activity-date { font-size: 11px; color: var(--color-normal-gray); font-weight: 700; }
+.activity-text { color: var(--color-darker-gray); margin-top: 2px; }
+.activity-sub { font-size: 11px; color: var(--color-normal-gray); }
+
+/* Counselor */
+.counselor-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #F0F0F0; }
+.counselor-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg, #001E5A, #0047AB);
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px;
+}
+.appt-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px; }
+.appt-row .label { color: var(--color-dark-gray); }
+
+/* Workshops */
+.workshop-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.workshop-row:last-child { border-bottom: none; }
+.workshop-name { font-size: 13px; font-weight: 700; }
+
+/* ============ ACTIONS CARD (tan bg) ============ */
+.actions-card {
+  background: var(--color-actions-tan);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.actions-title-bar {
+  padding: 14px 18px;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-blue-purple);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.actions-title-bar .help-icon {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--color-red);
+  color: white;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.actions-body { padding: 4px 14px 14px; }
+.action-group-tan {
+  margin-bottom: 10px;
+}
+.action-group-header-tan {
+  background: white;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--color-darker-gray);
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.action-group-header-tan .chev {
+  font-size: 11px;
+  transition: transform 300ms ease;
+  color: var(--color-darker-gray);
+}
+.action-group-header-tan.collapsed .chev { transform: rotate(-90deg); }
+.action-list-tan {
+  padding: 12px 14px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: max-height 300ms ease;
+  max-height: 500px;
+  overflow: hidden;
+}
+.action-list-tan.hidden { max-height: 0; padding: 0 14px; }
+.action-list-tan a {
+  color: var(--color-red);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: underline;
+  padding: 2px 0;
+  display: block;
+}
+.action-list-tan a:hover { color: #a03307; }
+.action-list-tan a.disabled {
+  color: #999999;
+  font-weight: 400;
+  text-decoration: none;
+  cursor: default;
+  pointer-events: none;
+}
+.action-list-tan a.disabled:hover { color: #999999; text-decoration: none; }
+
+.partner-referrals-group {
+  background: rgba(255,255,255,0.6);
+  border: 1px dashed var(--color-red);
+  border-radius: 6px;
+  margin-top: 10px;
+}
+.partner-referrals-group .action-group-header-tan {
+  background: transparent;
+  color: var(--color-red);
+}
+
+/* ============ MODALS ============ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+.modal-overlay.active { opacity: 1; pointer-events: auto; }
+.modal {
+  background: white;
+  border-radius: 8px;
+  padding: 32px;
+  max-width: 600px;
+  width: 92%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  transform: translateY(20px);
+  transition: transform 300ms ease;
+  position: relative;
+}
+.modal.large { max-width: 680px; }
+.modal.xlarge { max-width: 1000px; max-height: 80vh; }
+.modal.xxlarge { max-width: 1100px; max-height: 80vh; }
+.modal-overlay.active .modal { transform: translateY(0); }
+
+.modal-close-x {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  padding: 4px;
+  line-height: 1;
+  color: var(--color-red);
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 4px;
+  transition: background 0.15s, opacity 0.15s;
+}
+.modal-close-x:hover { background: rgba(211, 69, 8, 0.08); }
+.modal-close-x svg { display: block; }
+
+/* Hub/RM tab bar */
+.page-tabs { display: flex; gap: 4px; border-bottom: 2px solid var(--color-brightest-gray); margin-bottom: 14px; }
+.page-tab { padding: 8px 14px; font-size: 13px; font-weight: 700; cursor: pointer; border: none; background: transparent; color: var(--color-normal-gray); border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.15s; display: flex; align-items: center; gap: 6px; }
+.page-tab:hover { color: var(--color-darker-gray); }
+.page-tab.active { color: var(--color-blue-purple); border-bottom-color: var(--color-blue-purple); }
+.page-tab .count-pill { background: var(--color-brightest-gray); color: var(--color-dark-gray); padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+.page-tab.active .count-pill { background: var(--color-blue-purple); color: #fff; }
+
+/* Hub/RM filter bar */
+.page-filter-bar { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; font-size: 13px; }
+.page-filter-bar input, .page-filter-bar select { padding: 6px 10px; border: 1px solid var(--color-brightest-gray); border-radius: 4px; font-family: inherit; font-size: 13px; }
+.page-filter-bar input { flex: 1; }
+
+/* Hub/RM data table */
+.page-data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.page-data-table th { text-align: left; padding: 8px 10px; background: var(--color-brightest-gray); color: var(--color-dark-gray); font-weight: 700; font-size: 11px; letter-spacing: 0.4px; text-transform: uppercase; border-bottom: 1px solid var(--color-light-gray); }
+.page-data-table td { padding: 10px; border-bottom: 1px solid var(--color-brightest-gray); }
+.page-data-table tr.stale-row { background: #fffbea; }
+.page-data-table tr.stale-row td:first-child::before { content: "📌 "; color: #FF9D26; }
+
+/* Status badges */
+.st-badge { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 700; }
+.st-referred { background: #e3e9f5; color: var(--color-blue-purple); }
+.st-reviewed { background: #e0f2f1; color: #00695c; }
+.st-interview { background: #ffe7d2; color: #D34508; }
+.st-offerext { background: #dbeafe; color: #2563eb; }
+.st-accepted { background: #e8f7ea; color: var(--color-dark-green); }
+.st-closed { background: var(--color-brightest-gray); color: var(--color-normal-gray); }
+
+/* Rollup stat grid (for Cohort Status) */
+.rollup-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin: 10px 0 14px; }
+.rollup-stat { text-align: center; padding: 12px 6px; background: var(--color-brightest-gray); border-radius: 4px; }
+.rollup-val { font-size: 20px; font-weight: 900; color: var(--color-darker-gray); }
+.rollup-lbl { font-size: 10px; color: var(--color-normal-gray); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
+/* KPI grid (for Partner Detail) */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 12px 0 18px; }
+.kpi-stat { text-align: center; padding: 14px 8px; background: var(--color-brightest-gray); border-radius: 4px; }
+.kpi-val { font-size: 22px; font-weight: 900; color: var(--color-darker-gray); }
+.kpi-lbl { font-size: 11px; color: var(--color-normal-gray); margin-top: 4px; }
+
+/* Time-window selector */
+.window-group { display: inline-flex; background: var(--color-brightest-gray); border-radius: 4px; padding: 2px; gap: 2px; }
+.window-group button { background: transparent; border: none; padding: 5px 12px; border-radius: 3px; font-size: 12px; cursor: pointer; font-weight: 700; color: var(--color-normal-gray); font-family: inherit; }
+.window-group button.active { background: var(--color-blue-purple); color: #fff; }
+
+/* Low-performance banner */
+.lp-banner { background: #fff3e0; border-left: 4px solid #FF9D26; padding: 10px 14px; font-size: 12px; color: #8a4a0c; border-radius: 4px; margin-bottom: 14px; }
+
+/* Sparkline-like bar chart */
+.spark-row { display: grid; grid-template-columns: 80px 1fr 40px; gap: 8px; align-items: center; font-size: 11px; margin-bottom: 4px; }
+.spark-bar { height: 10px; background: var(--color-brightest-gray); border-radius: 2px; overflow: hidden; }
+.spark-fill { height: 100%; background: var(--color-normal-green); }
+
+/* Clickable rows */
+.clickable-row { cursor: pointer; }
+.clickable-row:hover td { background: #fffbea; }
+
+/* Locked badge */
+.lock-badge { display: inline-block; padding: 2px 6px; background: var(--color-brightest-gray); color: var(--color-normal-gray); border-radius: 3px; font-size: 10px; font-weight: 700; }
+
+.modal-title { font-size: 20px; font-weight: 900; margin-bottom: 6px; color: var(--color-darker-gray); }
+.modal-subtitle { font-size: 13px; color: var(--color-normal-gray); margin-bottom: 20px; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; flex-wrap: wrap; }
+
+.form-group { margin-bottom: 16px; }
+.form-label { display: block; font-size: 13px; font-weight: 700; color: var(--color-dark-gray); margin-bottom: 6px; }
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--color-disabled-gray);
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  background: white;
+  color: var(--color-darker-gray);
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--color-red); }
+.form-textarea { resize: vertical; min-height: 90px; }
+.radio-row { display: flex; gap: 24px; margin-top: 6px; }
+.radio-row label { font-size: 14px; display: flex; align-items: center; gap: 6px; cursor: pointer; }
+.modal input[type="radio"],
+.modal input[type="checkbox"] { accent-color: #d34508; }
+
+.info-box {
+  background: var(--color-light-cream);
+  border: 1px solid var(--color-yellow);
+  border-radius: 4px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: #5c3d00;
+  line-height: 1.5;
+}
+.info-box ul { margin: 8px 0 0 18px; }
+
+.checklist { list-style: none; margin-top: 10px; }
+.checklist li {
+  padding: 10px 12px;
+  border: 1px solid var(--color-disabled-gray);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.checklist li:hover { background: var(--color-brightest-gray); }
+.checklist li input { margin-top: 2px; }
+.checklist-title { font-weight: 700; color: var(--color-darker-gray); }
+.checklist-desc { color: var(--color-normal-gray); font-size: 12px; margin-top: 2px; }
+
+/* ============ TOAST ============ */
+.toast {
+  position: fixed;
+  top: 80px;
+  right: 24px;
+  background: #f0fff4;
+  border: 1px solid var(--color-normal-green);
+  border-left: 4px solid var(--color-normal-green);
+  color: var(--color-dark-green);
+  padding: 14px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  z-index: 300;
+  opacity: 0;
+  transform: translateX(20px);
+  pointer-events: none;
+  transition: all 300ms ease;
+  max-width: 400px;
+}
+.toast.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+
+.intake-note {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: var(--color-brightest-gray);
+  border-radius: 4px;
+  font-size: 13px;
+  color: var(--color-dark-gray);
+}
+
+/* Device card */
+.device-box {
+  border: 1px solid #E6E6E6;
+  border-radius: 8px;
+  padding: 16px 18px;
+  display: flex;
+  gap: 100px;
+  align-items: flex-start;
+}
+.device-icon {
+  width: 70px; height: 54px;
+  background: #F0F0F0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  flex-shrink: 0;
+}
+.device-main { font-weight: 700; font-size: 14px; margin-top: 6px; }
+.device-sub { font-size: 13px; color: var(--color-dark-gray); }
+.device-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px 22px;
+}
+
+/* Credit For Prior Learning */
+.cpl-table { width: 100%; border-collapse: collapse; }
+.cpl-table th {
+  background: transparent;
+  border-bottom: 1px solid #E6E6E6;
+  font-size: 13px;
+  padding: 8px 10px;
+  color: var(--color-blue-purple);
+  text-align: left;
+}
+.cpl-table td {
+  padding: 10px;
+  border: none;
+  font-size: 13px;
+}
+.cpl-table tr.bordered td { border-bottom: 1px solid #E6E6E6; }
+.cpl-table a { color: var(--color-red); font-weight: 700; }
+
+/* Attendance donut */
+.attendance-row { display: flex; align-items: center; gap: 20px; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="logo">
+    <img src="images/calbright_logo.png" alt="Calbright College" style="height: 36px; display: block;">
+  </div>
+  <div class="search-wrap">
+    <input class="search" placeholder="🔍  Search for a Student...">
+  </div>
+  <div class="topbar-right">
+    <div class="icon-grid">⋮⋮⋮</div>
+    <div class="icon-grid">⚙</div>
+    <div class="user-avatar">SW</div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ============ STUDENT HEADER ============ -->
+  <div class="student-header">
+    <div class="student-top">
+      <div class="student-avatar">MV</div>
+      <div class="student-name-row">
+        <div class="student-name-col">
+          <div class="student-name">Mariah Villalobos</div>
+          <div class="student-pronoun">She/Her</div>
+        </div>
+        <div class="badges">
+          <span class="badge red">Level 3</span>
+          <span class="badge yellow">Basic Needs</span>
+          <span class="badge teal">ELL</span>
+          <span class="badge blue">Digital Literacy</span>
+        </div>
+      </div>
+      <div class="status-right">
+        <div class="status-ontrack">On Track</div>
+        <a class="journey-link" href="#" onclick="event.preventDefault()">View Journey Map</a>
+      </div>
+    </div>
+    <div class="student-divider"></div>
+    <div class="student-meta">
+      <div><span class="label">Program</span><span class="value">Medical Coding</span></div>
+      <div><span class="label">CCCID</span><span class="value">TQ82718</span></div>
+      <div><span class="label">Phone Number</span><span class="value">428-298-1900</span></div>
+      <div><span class="label">Learner Status</span><span class="value">Started Program Pathway</span></div>
+      <div><span class="label">Calbright Email</span><span class="value">Mariah.V@calbrightcollege.com</span></div>
+      <div data-tip="Preferred Contact Methods and Times: Email, Text Message, Weekday Mornings (8am - 12pm)"><span class="label">Preferred Contact Methods and Times</span><span class="value">Email, Text Message, Weekday Mornings (8am - 12pm)</span></div>
+    </div>
+  </div>
+
+  <div class="main-grid">
+    <!-- ============ LEFT COLUMN ============ -->
+    <div class="left-col">
+
+      <!-- Important Dates -->
+      <div class="important-dates-card">
+        <div class="important-dates-title">Important Dates</div>
+        <div class="important-dates-grid">
+          <div>
+            <div class="field-label">Enrollment Date</div>
+            <div class="field-value">09/27/2024</div>
+          </div>
+          <div>
+            <div class="field-label">Start of Term Date</div>
+            <div class="field-value">05/28/2025</div>
+          </div>
+          <div>
+            <div class="field-label">End of Term Date</div>
+            <div class="field-value">11/28/2025</div>
+          </div>
+          <div>
+            <div class="field-label">Drop Deadline</div>
+            <div class="field-value">06/27/2025</div>
+          </div>
+          <div>
+            <div class="field-label">Withdraw Deadline</div>
+            <div class="field-value">09/06/2025</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======= Details group (single big card wrapping all sections) ======= -->
+      <div class="details-card">
+        <div class="details-title">Details</div>
+
+      <!-- ======= Contact Details ======= -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-title"><span class="chev">▼</span> Contact Details</div>
+          <div class="section-header-right"><a class="edit-link" href="#" onclick="event.preventDefault()">Edit</a></div>
+        </div>
+        <div class="section-body">
+          <div class="field-grid">
+            <div><div class="field-label">First Name</div><div class="field-value">Mariah</div></div>
+            <div><div class="field-label">Middle Name</div><div class="field-value">-</div></div>
+            <div><div class="field-label">Last Name</div><div class="field-value">Villalobos</div></div>
+            <div><div class="field-label">Preferred First Name</div><div class="field-value">-</div></div>
+            <div><div class="field-label">Preferred Last Name</div><div class="field-value">-</div></div>
+            <div><div class="field-label">Pronouns</div><div class="field-value">She/Her</div></div>
+            <div><div class="field-label">Calbright Email</div><div class="field-value">Mariah.V@calbrightcollege.com</div></div>
+            <div><div class="field-label">Personal Email</div><div class="field-value">Mariah.V@gmail.com</div></div>
+            <div><div class="field-label">Home Phone Number</div><div class="field-value">-</div></div>
+            <div><div class="field-label">Mobile Phone Number</div><div class="field-value">428-298-1900</div></div>
+            <div><div class="field-label">Preferred Contact Method</div><div class="field-value">Email</div></div>
+            <div><div class="field-label">Preferred Contact Time</div><div class="field-value">Weekends (10am - 4pm)</div></div>
+            <div><div class="field-label">CA Resident</div><div class="field-value">Yes</div></div>
+            <div><div class="field-label">Living Situation (Homeless or Not Homeless)</div><div class="field-value">Not Homeless</div></div>
+            <div><div class="field-label">Living Situation</div><div class="field-value">Own home</div></div>
+          </div>
+          <div class="subhead plain">Mailing Address (Can include P.O. Box):</div>
+          <div class="field-grid cols-4">
+            <div><div class="field-label">Address 1</div><div class="field-value">25200 Carlos Bee Blvd</div></div>
+            <div><div class="field-label">Address 2 (Apt#)</div><div class="field-value">301</div></div>
+            <div><div class="field-label">City</div><div class="field-value">Hayward</div></div>
+            <div><div class="field-label">State</div><div class="field-value">CA</div></div>
+            <div><div class="field-label">Zipcode</div><div class="field-value">94545</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======= Enrollment Details (with Course Data + Persistence Data nested) ======= -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-title"><span class="chev">▼</span> Enrollment Details</div>
+          <div class="section-header-right">Data Analytics · 09/27/24 · IT Support · 03/09/25</div>
+        </div>
+        <div class="section-body">
+          <div class="field-grid">
+            <div><div class="field-label">Term Start Date</div><div class="field-value">05/28/2025</div></div>
+            <div><div class="field-label">Term End Date</div><div class="field-value">11/28/2025</div></div>
+            <div><div class="field-label">LMS ID</div><div class="field-value red">X326167</div></div>
+            <div><div class="field-label">LMS</div><div class="field-value">Canvas</div></div>
+            <div><div class="field-label">1st LMS SAA Time Stamp</div><div class="field-value">05/28/2025, 3:22 PM</div></div>
+            <div><div class="field-label">Last LMS SAA Time Stamp</div><div class="field-value">07/26/2025, 4:56 PM</div></div>
+            <div><div class="field-label">Days Since Enrollment</div><div class="field-value">401 Days</div></div>
+            <div><div class="field-label">Days Since Last SAA</div><div class="field-value">99 Days</div></div>
+            <div><div class="field-label">Drop / Withdraw Date</div><div class="field-value">-</div></div>
+          </div>
+
+          <!-- Nested: Course Data -->
+          <div class="subhead sub-toggle" style="color: var(--color-red); cursor: pointer; border-top: none; padding-top: 0;" onclick="toggleSubGroup(this)"><span class="sub-chev">▼</span> Course Data</div>
+          <div class="sub-body">
+          <table class="course-table">
+            <thead>
+              <tr>
+                <th colspan="3"></th>
+                <th colspan="3" class="term-start">2024-25-TERM-31</th>
+                <th colspan="3" class="term-start">2024-25-TERM-05</th>
+              </tr>
+              <tr>
+                <th>Course</th><th>Submitted Progress</th><th>Graded Progress</th>
+                <th class="term-start">Grade</th><th>Certification Date</th><th>Grading Instructor</th>
+                <th class="term-start">Grade</th><th>Certification Date</th><th>Grading Instructor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="#" onclick="event.preventDefault()">BUS500</a></td>
+                <td>41%</td><td>41%</td>
+                <td class="term-start">-</td><td>-</td><td>Catherine Parker</td>
+                <td class="term-start">SP</td><td>03/28/2025</td><td>Catherine Parker</td>
+              </tr>
+              <tr>
+                <td><a href="#" onclick="event.preventDefault()">BUS501</a></td>
+                <td>0%</td><td>0%</td>
+                <td class="term-start">-</td><td>-</td><td>Catherine Parker</td>
+                <td class="term-start">SP</td><td>03/28/2025</td><td>Catherine Parker</td>
+              </tr>
+            </tbody>
+          </table>
+          </div><!-- /.sub-body Course Data -->
+
+          <!-- Nested: Persistence Data -->
+          <div class="subhead sub-toggle" style="color: var(--color-red); cursor: pointer; border-top: none; padding-top: 14px;" onclick="toggleSubGroup(this)"><span class="sub-chev">▼</span> Persistence Data</div>
+          <div class="sub-body">
+          <p style="font-size: 13px; margin-bottom: 12px; color: var(--color-darker-gray);">
+            Timeline: <strong>180 days</strong> · Current Status: <span class="status-pill red">Way Behind</span> · Grace Period: <strong>9 weeks</strong> · # of Timeline Changes: <strong>1</strong> · Current Week: <strong>22</strong>
+          </p>
+          <div style="font-size: 13px; font-weight: 700; margin: 10px 0 8px;">Persistence History</div>
+          <table class="course-table">
+            <thead>
+              <tr><th>Timeline</th><th>Grace Period</th><th>Date</th><th>Reason</th><th>Granted By</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>180 Days</td><td>3 weeks</td><td>05/21/25</td><td>A major life event</td><td>Kristen</td></tr>
+              <tr><td>180 Days</td><td>2 weeks</td><td>07/10/25</td><td>Program content difficulty</td><td>"Automatic"</td></tr>
+              <tr><td>180 Days</td><td>4 weeks</td><td>08/23/25</td><td>Increased work or other academic demands</td><td>Ava</td></tr>
+              <tr><td>180 Days</td><td>0 weeks</td><td>07/10/25</td><td>Increased work or other academic demands</td><td>Kristen</td></tr>
+            </tbody>
+          </table>
+          </div><!-- /.sub-body Persistence Data -->
+        </div>
+      </div>
+
+      <!-- ======= Device Details ======= -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-title"><span class="chev">▼</span> Devices Details</div>
+        </div>
+        <div class="section-body">
+          <div style="font-weight: 700; font-size: 13px; margin-bottom: 10px;">Latest Devices</div>
+          <div class="device-box">
+            <div>
+              <div class="device-icon">💻</div>
+              <div class="device-main">Laptop</div>
+              <div class="device-sub">Acer Chromebook 314</div>
+            </div>
+            <div class="device-grid">
+              <div><div class="field-label">Date Requested</div><div class="field-value">09/27/2024</div></div>
+              <div><div class="field-label">Date Delivered</div><div class="field-value">09/29/2024</div></div>
+              <div><div class="field-label">Tracking Number</div><div class="field-value red">1z7265xayq671927s62919</div></div>
+              <div><div class="field-label">Return Requested</div><div class="field-value">02/21/2025</div></div>
+              <div><div class="field-label">Date Returned</div><div class="field-value">-</div></div>
+              <div><div class="field-label">Tracking Number</div><div class="field-value">-</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======= Student Profile ======= -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-title"><span class="chev">▼</span> Student Profile</div>
+          <div class="section-header-right"><a class="edit-link" href="#" onclick="event.preventDefault()">Edit</a></div>
+        </div>
+        <div class="section-body">
+          <div class="subhead">Basic Info</div>
+          <div class="field-grid">
+            <div><div class="field-label">Gender</div><div class="field-value">Female</div></div>
+            <div><div class="field-label">Age</div><div class="field-value">43</div></div>
+            <div><div class="field-label">Marital status</div><div class="field-value">Divorced</div></div>
+          </div>
+          <div class="subhead">Jobs and Income</div>
+          <div class="field-grid">
+            <div><div class="field-label">Employment Status</div><div class="field-value">Yes</div></div>
+            <div><div class="field-label">Number of Jobs</div><div class="field-value">1</div></div>
+            <div><div class="field-label">Current Job Hours</div><div class="field-value">20</div></div>
+          </div>
+          <div class="subhead">Education and Career Goals</div>
+          <div class="field-grid">
+            <div><div class="field-label">Education</div><div class="field-value">High School</div></div>
+            <div><div class="field-label">Education goals</div><div class="field-value">Improve basic skills</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======= Intake Assessment ======= -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-title"><span class="chev">▼</span> Intake Assessment</div>
+          <div class="section-header-right">Assessment Date: <strong>05/27/2025</strong> · Total Score: <strong>135</strong></div>
+        </div>
+        <div class="section-body">
+          <p style="font-size: 13px; color: var(--color-darker-gray); margin-bottom: 10px;">
+            Student has had Level 3 needs · Total Score: 135
+          </p>
+          <p style="font-size: 13px; color: var(--color-dark-gray); margin-bottom: 16px; padding: 10px 12px; background: var(--color-brightest-gray); border-radius: 4px;">
+            The information gathered ensures that students receive the appropriate academic, career, and personal support to enhance their learning experience and success at our institution.
+          </p>
+          <table class="course-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th style="width: 70px;">Score</th>
+                <th style="width: 100px;">Risk Level</th>
+                <th style="width: 160px;">Workshops</th>
+                <th style="width: 110px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Technology &amp; Online Learning Readiness</td>
+                <td>20</td>
+                <td><span class="risk-high">High</span></td>
+                <td>Digital Literacy</td>
+                <td><a href="#" onclick="event.preventDefault()">Edit</a></td>
+              </tr>
+              <tr>
+                <td>Academic &amp; Career Goals</td>
+                <td>25</td>
+                <td><span class="risk-high">High</span></td>
+                <td>—</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>Demographics &amp; Background</td>
+                <td>10</td>
+                <td><span class="risk-high">High</span></td>
+                <td>—</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>Language</td>
+                <td>5</td>
+                <td><span class="risk-high">High</span></td>
+                <td>ELL</td>
+                <td><a href="#" onclick="event.preventDefault()">Add</a></td>
+              </tr>
+              <tr>
+                <td>Personal Wellbeing &amp; Support</td>
+                <td>75</td>
+                <td><span class="risk-high">High</span></td>
+                <td>Basic Needs</td>
+                <td>—</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="intake-note">
+            <strong>Student can be contacted for 1 on 1 at below time slot:</strong><br>
+            9:00 AM – 12:00 PM<br>
+            <span style="color: var(--color-normal-gray);">Student would like to participate in community and student life activities: Focus Groups</span>
+          </div>
+          <div style="margin-top: 10px;">
+            <a href="#" onclick="event.preventDefault()">View Intake Assessment</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======= Credit For Prior Learning ======= -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-title"><span class="chev">▼</span> Credit For Prior Learning</div>
+        </div>
+        <div class="section-body">
+          <table class="cpl-table">
+            <thead>
+              <tr>
+                <th>Submission Type</th>
+                <th>Submissions Date</th>
+                <th>Decision Date</th>
+                <th>Denial</th>
+                <th>Reason</th>
+                <th>Granted By</th>
+                <th style="text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bordered">
+                <td>Initial Request</td>
+                <td>05/20/25</td>
+                <td></td><td></td><td></td><td></td>
+                <td style="text-align: right;"><a href="#" onclick="event.preventDefault()">Review</a></td>
+              </tr>
+              <tr><td colspan="7" style="padding: 4px 0;"></td></tr>
+              <tr>
+                <td>Support Documents #1</td>
+                <td colspan="5"><a href="#" onclick="event.preventDefault()">Mariah Villalobos - Resume. Docx</a></td>
+                <td style="text-align: right;">05/20/25</td>
+              </tr>
+              <tr>
+                <td>Support Documents #2</td>
+                <td colspan="5"><a href="#" onclick="event.preventDefault()">Mariah Villalobos - Trasncript. PDF</a></td>
+                <td style="text-align: right;">05/20/25</td>
+              </tr>
+              <tr>
+                <td>Support Documents #3</td>
+                <td colspan="5"><a href="#" onclick="event.preventDefault()">Mariah Villalobos - Letter Recomendation. PDF</a></td>
+                <td style="text-align: right;">05/20/25</td>
+              </tr>
+              <tr>
+                <td>Support Documents #4</td>
+                <td colspan="5"><a href="#" onclick="event.preventDefault()">Mariah Villalobos - Projects. PDF</a></td>
+                <td style="text-align: right;">05/20/25</td>
+              </tr>
+              <tr>
+                <td>Support Documents #5</td>
+                <td colspan="5">N/A</td>
+                <td style="text-align: right;">N/A</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      </div><!-- /.details-card -->
+
+    </div>
+
+    <!-- ============ RIGHT COLUMN ============ -->
+    <div class="right-col">
+
+      <!-- Financial Hardship -->
+      <div class="card" id="financialHardshipCard">
+        <div class="card-header-light">
+          <span>Financial Hardship</span>
+          <a href="#" onclick="event.preventDefault(); openFinancialHardshipModal()" id="fhDetailsLink" style="font-size:12px; display:none;">Details →</a>
+        </div>
+        <div class="card-body">
+          <div class="appt-row">
+            <span class="label">Status</span>
+            <span id="fhStatus" style="font-weight: 700; display: inline-flex; align-items: center; gap: 6px;">
+              <svg class="fh-icon-lock" style="display:none" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <svg class="fh-icon-bell" style="display:none" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              <span id="fhStatusText">N/A</span>
+            </span>
+          </div>
+          <div class="appt-row" id="fhSubmittedRow" style="display:none;">
+            <span class="label">Submitted</span>
+            <span id="fhSubmittedTime">-</span>
+          </div>
+          <div class="appt-row" id="fhMatchRow" style="display:none;">
+            <span class="label">Programs Matched</span>
+            <span id="fhMatchCount" style="font-weight: 700;">-</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Career Partnership Card -->
+      <div class="card">
+        <div class="card-header-light">
+          <span>Career Partnership</span>
+          <span style="font-size: 11px; font-weight: 400; color: var(--color-normal-gray);">3 matches</span>
+        </div>
+        <div style="padding: 14px 18px;">
+          <div class="opp-row">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+              <span class="tier-badge tier-l1">L1</span>
+              <span style="font-weight:700; font-size:13px;">Parker Dewey · CRM Micro-Internship</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; font-size:12px; color:var(--color-normal-gray); margin-bottom:4px;">
+              <span class="match-score match-strong">Match 94</span>
+              <span>· Remote</span>
+              <span>· Deadline in 5 days</span>
+            </div>
+            <div style="font-size:11px; color:var(--color-normal-gray); margin-bottom:8px;">Program match · Remote fit · Readiness ≥ 65</div>
+            <div style="text-align:right;">
+              <button class="btn btn-outline btn-sm" onclick="openMatchedReferralModal('Parker Dewey','CRM Micro-Internship',94)">Refer →</button>
+            </div>
+          </div>
+          <div class="opp-row">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+              <span class="tier-badge tier-l2">L2</span>
+              <span style="font-weight:700; font-size:13px;">Snap Inc. · Junior Data Analyst</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; font-size:12px; color:var(--color-normal-gray); margin-bottom:4px;">
+              <span class="match-score match-strong">Match 87</span>
+              <span>· Hybrid SF</span>
+              <span>· Deadline in 12 days</span>
+            </div>
+            <div style="font-size:11px; color:var(--color-normal-gray); margin-bottom:8px;">Program match · Location preferred</div>
+            <div style="text-align:right;">
+              <button class="btn btn-outline btn-sm" onclick="openMatchedReferralModal('Snap Inc.','Junior Data Analyst',87)">Refer →</button>
+            </div>
+          </div>
+          <div class="opp-row">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+              <span class="tier-badge tier-l1">L1</span>
+              <span style="font-weight:700; font-size:13px;">Accenture · CRM Support Intern</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; font-size:12px; color:var(--color-normal-gray); margin-bottom:4px;">
+              <span class="match-score match-weak">Match 72</span>
+              <span>· Remote</span>
+              <span>· Deadline in 20 days</span>
+            </div>
+            <div style="font-size:11px; color:var(--color-normal-gray); margin-bottom:8px;">Program partial match · Override reason required</div>
+            <div style="text-align:right;">
+              <button class="btn btn-outline btn-sm" onclick="openMatchedReferralModal('Accenture','CRM Support Intern',72)">Refer →</button>
+            </div>
+          </div>
+          <div style="text-align:right; margin-top:10px;">
+            <a href="#" onclick="event.preventDefault(); openPartnershipHubModal()" style="font-size:12px;">Browse all open opportunities →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job Readiness Score -->
+      <div class="card">
+        <div class="card-header-light">
+          <span>Job Readiness Score</span>
+          <span><strong style="font-size:15px;">72</strong><span style="color:var(--color-normal-gray); font-size:12px;"> / 100</span> <span class="status-pill green" style="margin-left:6px;">Ready</span></span>
+        </div>
+        <div style="padding: 14px 18px;">
+          <div style="font-size:12px; color:var(--color-normal-gray); margin-bottom:10px;">Breakdown (click to inspect)</div>
+          <div class="readiness-row"><span class="readiness-label">Program Progress</span><span class="readiness-value">28 / 30</span><div class="readiness-bar"><div class="readiness-fill" style="width:93%; background:#0DA820;"></div></div></div>
+          <div class="readiness-row"><span class="readiness-label">Workshops</span><span class="readiness-value">15 / 20</span><div class="readiness-bar"><div class="readiness-fill" style="width:75%; background:#0DA820;"></div></div></div>
+          <div class="readiness-row"><span class="readiness-label">CPL / Credential</span><span class="readiness-value">8 / 15</span><div class="readiness-bar"><div class="readiness-fill" style="width:53%; background:#F5BB11;"></div></div></div>
+          <div class="readiness-row"><span class="readiness-label">Intake Assessment</span><span class="readiness-value">10 / 15</span><div class="readiness-bar"><div class="readiness-fill" style="width:67%; background:#F5BB11;"></div></div></div>
+          <div class="readiness-row"><span class="readiness-label">Counselor Confidence</span><span class="readiness-value">11 / 20</span><div class="readiness-bar"><div class="readiness-fill" style="width:55%; background:#F5BB11;"></div></div></div>
+          <div style="text-align:right; margin-top:10px;">
+            <a href="#" onclick="event.preventDefault(); openCounselorConfidenceModal()" style="font-size:12px;">Set Counselor Confidence →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Referral Activity -->
+      <div class="card">
+        <div class="card-header-light">
+          <span>Referral Activity</span>
+          <span style="font-size: 11px; font-weight: 400; color: var(--color-normal-gray);">Active referrals</span>
+        </div>
+        <div style="padding: 14px 18px;">
+          <div class="referral-row">
+            <div style="font-weight:700; font-size:13px;">Parker Dewey · CRM Micro-Internship</div>
+            <div style="font-size:12px; color:var(--color-normal-gray); margin-bottom:6px;">Status: <strong>Interview Scheduled</strong> · 3 days ago</div>
+            <div style="text-align:right;">
+              <button class="btn btn-outline btn-sm" onclick="openStatusUpdateModal('Parker Dewey','CRM Micro-Internship','Interview Scheduled')">Update Status →</button>
+            </div>
+          </div>
+          <div class="referral-row">
+            <div style="font-weight:700; font-size:13px;">Docusign · Full-time Data role</div>
+            <div style="font-size:12px; color:var(--color-normal-gray); margin-bottom:6px;">Status: <strong>Partner Reviewed</strong> · 8 days ago</div>
+            <div style="text-align:right;">
+              <button class="btn btn-outline btn-sm" onclick="openStatusUpdateModal('Docusign','Full-time Data role','Partner Reviewed')">Update Status →</button>
+            </div>
+          </div>
+          <div style="text-align:right; margin-top:10px;">
+            <a href="#" onclick="event.preventDefault(); openReferralManagementModal()" style="font-size:12px;">View all referrals →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leave of Absence -->
+      <div class="card">
+        <div class="card-header-light">Leave of Absence</div>
+        <div class="card-body">
+          <div class="appt-row"><span class="label">Leave of Absence?</span><span style="font-weight: 700;">No</span></div>
+          <div class="appt-row"><span class="label">Leave of Absence Date</span>-</div>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="card">
+        <div class="card-header-light">
+          <span>Recent Activity</span>
+        </div>
+        <div style="padding: 12px 18px 4px; display: flex; gap: 8px; align-items: center;">
+          <div style="width: 28px; height: 28px; background: #0DA820; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px;">✉</div>
+          <div style="width: 28px; height: 28px; background: #8E44AD; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px;">☎</div>
+          <div style="width: 28px; height: 28px; background: #F5BB11; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px;">📋</div>
+          <div style="width: 28px; height: 28px; background: #2E6ED4; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px;">📅</div>
+          <div style="width: 28px; height: 28px; background: #001E5A; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px;">📍</div>
+        </div>
+        <div style="padding: 4px 18px 14px;" id="activityFeed">
+          <div style="font-size: 12px; font-weight: 700; color: var(--color-darker-gray); margin: 12px 0 6px; border-top: 1px solid #F0F0F0; padding-top: 10px;">Upcoming &amp; Overdue</div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background: #8E44AD;"></div>
+            <div class="activity-body">
+              <div class="activity-date" style="color: var(--color-red);">Apr 4</div>
+              <div class="activity-text" style="color: var(--color-red); font-weight: 700;">⊖ Digital Literacy Workshop</div>
+              <div class="activity-sub">Calbright Eng has an upcoming task</div>
+            </div>
+          </div>
+          <div class="activity-item no-line">
+            <div class="activity-dot" style="background: #8E44AD;"></div>
+            <div class="activity-body">
+              <div class="activity-date" style="color: var(--color-red);">Apr 4</div>
+              <div class="activity-text" style="color: var(--color-red); font-weight: 700;">⊖ Online Learning Workshop</div>
+              <div class="activity-sub">Calbright Eng has an upcoming task</div>
+            </div>
+          </div>
+          <div style="font-size: 12px; font-weight: 700; color: var(--color-darker-gray); margin: 12px 0 6px; border-top: 1px solid #F0F0F0; padding-top: 10px;">July 2025</div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background: var(--color-normal-green);"></div>
+            <div class="activity-body">
+              <div class="activity-date">7:30 PM · Jul 22</div>
+              <div class="activity-text" style="color: var(--color-normal-green); font-weight: 700;">✓ Scheduled Office Hours with Cat...</div>
+              <div class="activity-sub">Catherine Parker had an event</div>
+            </div>
+          </div>
+          <div style="text-align: right; margin-top: 10px;">
+            <a href="#" style="font-size: 12px;" onclick="event.preventDefault()">View All Activities</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Attendance Rate -->
+      <div class="card">
+        <div class="card-header-light">Attendance Rate</div>
+        <div class="card-body">
+          <div class="attendance-row">
+            <svg width="100" height="100" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#E0E1E2" stroke-width="14"/>
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#0DA820" stroke-width="14"
+                stroke-dasharray="62.8 251.2" transform="rotate(-90 50 50)"/>
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#2E6ED4" stroke-width="14"
+                stroke-dasharray="52.8 251.2" stroke-dashoffset="-62.8" transform="rotate(-90 50 50)"/>
+              <text x="50" y="55" text-anchor="middle" font-size="20" font-weight="900" fill="#333">46<tspan font-size="11">%</tspan></text>
+            </svg>
+            <div style="flex: 1; font-size: 13px;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <span class="legend-dot" style="background: #0DA820;"></span>
+                <span>Counselor</span>
+                <span style="margin-left: auto; font-weight: 700;">25%</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="legend-dot" style="background: #2E6ED4;"></span>
+                <span>Instructor</span>
+                <span style="margin-left: auto; font-weight: 700;">21%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Success Counselor -->
+      <div class="card">
+        <div class="card-header-light">Success Counselor</div>
+        <div class="card-body">
+          <div class="counselor-row">
+            <div class="counselor-avatar">RY</div>
+            <div>
+              <div style="font-weight: 700;">Rondy Yu</div>
+              <div style="font-size: 12px; color: var(--color-normal-gray);">Counselor</div>
+            </div>
+          </div>
+          <div class="appt-row"><span class="label">Next Appointment</span><a href="#" onclick="event.preventDefault()">Add</a></div>
+          <div class="appt-row"><span class="label">Appointment History</span><a href="#" onclick="event.preventDefault()">Add</a></div>
+        </div>
+      </div>
+
+      <!-- Workshops -->
+      <div class="card">
+        <div class="card-header-light">Workshops</div>
+        <div class="card-body">
+          <div class="workshop-row">
+            <div>
+              <div class="workshop-name">Digital Literacy</div>
+              <div style="font-size: 11px; color: var(--color-normal-gray);">Completed 04/02/2025</div>
+            </div>
+            <span class="status-pill green">Completed ✓</span>
+          </div>
+          <div class="workshop-row">
+            <div>
+              <div class="workshop-name">ELL Workshop</div>
+              <div style="font-size: 11px; color: var(--color-normal-gray);">Enrolled 05/20/2025</div>
+            </div>
+            <span class="status-pill blue">Enrolled</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Program Preview -->
+      <div class="card">
+        <div class="card-header-light">Program Preview</div>
+        <div class="card-body">
+          <div style="font-size: 12px; color: var(--color-normal-gray); margin-bottom: 4px;">Enrolled Program</div>
+          <div style="font-size: 14px;">CRM</div>
+        </div>
+      </div>
+
+      <!-- Actions (tan background) -->
+      <div class="actions-card">
+        <div class="actions-title-bar">
+          <span>Actions</span>
+          <span class="help-icon">?</span>
+        </div>
+        <div class="actions-body">
+          <div class="action-group-tan">
+            <div class="action-group-header-tan" onclick="toggleActionTan(this)"><span class="chev">▼</span> Enrollment Actions</div>
+            <div class="action-list-tan">
+              <a href="#" onclick="event.preventDefault()">Drop/Withdraw Student</a>
+              <a href="#" onclick="event.preventDefault()" class="disabled">Leave of absence</a>
+              <a href="#" onclick="event.preventDefault()" class="disabled">Change Program</a>
+              <a href="#" onclick="event.preventDefault()" class="disabled">Enroll Student</a>
+              <a href="#" onclick="event.preventDefault()" class="disabled">Send Enrollment Agreement</a>
+              <a href="#" onclick="event.preventDefault()" class="disabled">Extend First SAA</a>
+            </div>
+          </div>
+          <div class="action-group-tan">
+            <div class="action-group-header-tan" onclick="toggleActionTan(this)"><span class="chev">▼</span> Device Management</div>
+            <div class="action-list-tan">
+              <a href="#" onclick="event.preventDefault()">Order a New Device</a>
+              <a href="#" onclick="event.preventDefault()">Report Device Lost</a>
+              <a href="#" onclick="event.preventDefault()">Report Device Stolen</a>
+              <a href="#" onclick="event.preventDefault()">Report Device Broken</a>
+              <a href="#" onclick="event.preventDefault()">Order Replacement Device</a>
+              <a href="#" onclick="event.preventDefault()">Request Return Label</a>
+            </div>
+          </div>
+          <div class="action-group-tan">
+            <div class="action-group-header-tan" onclick="toggleActionTan(this)"><span class="chev">▼</span> Persistence Actions</div>
+            <div class="action-list-tan">
+              <a href="#" onclick="event.preventDefault()">Change Paced Timeline</a>
+              <a href="#" onclick="event.preventDefault()">Add Grace Period</a>
+              <a href="#" onclick="event.preventDefault()">Disable Timeline</a>
+            </div>
+          </div>
+          <div class="action-group-tan">
+            <div class="action-group-header-tan" onclick="toggleActionTan(this)"><span class="chev">▼</span> Career Partnership</div>
+            <div class="action-list-tan">
+              <a href="#" onclick="event.preventDefault(); openOpportunityIntakeModal()">Add New Opportunity</a>
+              <a href="#" onclick="event.preventDefault(); openCohortMatchingModal()">Start Cohort Matching</a>
+              <a href="#" onclick="event.preventDefault(); openPartnerPerformanceModal()">View Partner Performance</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODALS ============ -->
+
+<!-- Modal 1: Matched Referral -->
+<div class="modal-overlay" id="matchedReferralModal" onclick="if(event.target===this) closeModal('matchedReferralModal')">
+  <div class="modal">
+    <button class="modal-close-x" aria-label="Close" onclick="closeModal('matchedReferralModal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-title" id="mrmTitle">Refer to Partner</div>
+    <div class="modal-subtitle" id="mrmSubtitle">Send this student to [Role]</div>
+    <div class="info-box">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+        <span class="tier-badge" id="mrmTier">L1</span>
+        <span style="font-weight:700;" id="mrmScore">Match 94</span>
+      </div>
+      <ul style="margin:6px 0 0 18px; padding:0;">
+        <li>Program match</li>
+        <li>Remote fit</li>
+        <li>Readiness ≥ 65</li>
+      </ul>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Referral note (optional)</label>
+      <textarea class="form-textarea" placeholder="Brief context for the partner..."></textarea>
+    </div>
+    <div class="form-group" style="display:flex; align-items:center; gap:10px;">
+      <label style="display:flex; align-items:center; gap:6px;"><input type="checkbox" id="mrmNotify"> Notify student</label>
+      <span style="font-size:11px; color:var(--color-normal-gray);">Default: staff keeps the referral private</span>
+    </div>
+    <div class="form-group" id="mrmOverrideWrap" style="display:none;">
+      <label class="form-label">Override justification (required)</label>
+      <textarea class="form-textarea" id="mrmOverride" placeholder="Explain why this non-matched referral is appropriate (min 20 chars)"></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('matchedReferralModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitMatchedReferral()">Send Referral</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 2: Counselor Confidence -->
+<div class="modal-overlay" id="counselorConfidenceModal" onclick="if(event.target===this) closeModal('counselorConfidenceModal')">
+  <div class="modal">
+    <button class="modal-close-x" aria-label="Close" onclick="closeModal('counselorConfidenceModal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-title">Set Counselor Confidence for Mariah Villalobos</div>
+    <div class="modal-subtitle">Your professional rating (20% of Readiness Score)</div>
+    <div class="form-group">
+      <ul class="checklist" style="list-style:none; padding:0;">
+        <li style="padding:10px 12px; border:1px solid var(--color-brightest-gray); border-radius:4px; margin-bottom:6px;"><label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;"><input type="radio" name="confidence" value="1"><div><div style="font-weight:700;">⭐ (1)</div><div style="font-size:12px; color:var(--color-normal-gray);">Needs significant coaching</div></div></label></li>
+        <li style="padding:10px 12px; border:1px solid var(--color-brightest-gray); border-radius:4px; margin-bottom:6px;"><label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;"><input type="radio" name="confidence" value="2"><div><div style="font-weight:700;">⭐⭐ (2)</div><div style="font-size:12px; color:var(--color-normal-gray);">Early stage</div></div></label></li>
+        <li style="padding:10px 12px; border:1px solid var(--color-brightest-gray); border-radius:4px; margin-bottom:6px;"><label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;"><input type="radio" name="confidence" value="3" checked><div><div style="font-weight:700;">⭐⭐⭐ (3)</div><div style="font-size:12px; color:var(--color-normal-gray);">Progressing</div></div></label></li>
+        <li style="padding:10px 12px; border:1px solid var(--color-brightest-gray); border-radius:4px; margin-bottom:6px;"><label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;"><input type="radio" name="confidence" value="4"><div><div style="font-weight:700;">⭐⭐⭐⭐ (4)</div><div style="font-size:12px; color:var(--color-normal-gray);">Ready with support</div></div></label></li>
+        <li style="padding:10px 12px; border:1px solid var(--color-brightest-gray); border-radius:4px; margin-bottom:6px;"><label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;"><input type="radio" name="confidence" value="5"><div><div style="font-weight:700;">⭐⭐⭐⭐⭐ (5)</div><div style="font-size:12px; color:var(--color-normal-gray);">Ready to refer confidently</div></div></label></li>
+      </ul>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Notes (optional)</label>
+      <textarea class="form-textarea" placeholder="Anything you'd like to capture about this rating..."></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('counselorConfidenceModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitCounselorConfidence()">Save Rating</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 3: Status Update -->
+<div class="modal-overlay" id="statusUpdateModal" onclick="if(event.target===this) closeModal('statusUpdateModal')">
+  <div class="modal">
+    <button class="modal-close-x" aria-label="Close" onclick="closeModal('statusUpdateModal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-title">Update Referral Status</div>
+    <div class="modal-subtitle" id="sumSubtitle">Parker Dewey · CRM Micro-Internship</div>
+    <div class="info-box">
+      <strong>Current status:</strong> <span id="sumCurrent">Interview Scheduled</span>
+    </div>
+    <div class="form-group">
+      <label class="form-label">New status</label>
+      <select class="form-select" id="sumNext" onchange="onStatusChange()">
+        <option>Referred</option>
+        <option>Partner Reviewed</option>
+        <option>Interview Scheduled</option>
+        <option>Interview Completed</option>
+        <option>Offer Extended</option>
+        <option>Offer Accepted</option>
+        <option>Offer Declined</option>
+        <option>Rejected</option>
+        <option>Withdrawn</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Change timestamp</label>
+      <input class="form-select" type="text" id="sumTimestamp" readonly>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Notes</label>
+      <textarea class="form-textarea" placeholder="Context for this status change..."></textarea>
+    </div>
+    <div class="form-group" id="sumPlacedWrap" style="display:none;">
+      <label style="display:flex; align-items:center; gap:8px;"><input type="checkbox" id="sumPlaced"> Mark student as Placed? This updates Partner Performance metrics.</label>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('statusUpdateModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitStatusUpdate()">Update Status</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 4: Opportunity Intake -->
+<div class="modal-overlay" id="opportunityIntakeModal" onclick="if(event.target===this) closeModal('opportunityIntakeModal')">
+  <div class="modal large">
+    <button class="modal-close-x" aria-label="Close" onclick="closeModal('opportunityIntakeModal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-title">New Partner Opportunity</div>
+    <div class="modal-subtitle">Capture a new partnership opportunity for matching</div>
+    <div class="form-group">
+      <label class="form-label">Partner Name</label>
+      <input class="form-select" type="text" placeholder="e.g., Parker Dewey">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Tier</label>
+      <div class="radio-row">
+        <label><input type="radio" name="tier" value="L1" onchange="onTierChange()" checked> L1 Internship</label>
+        <label><input type="radio" name="tier" value="L2" onchange="onTierChange()"> L2 Full-time</label>
+        <label><input type="radio" name="tier" value="L3" onchange="onTierChange()"> L3 Apprenticeship</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Role Title</label>
+      <input class="form-select" type="text" placeholder="e.g., CRM Micro-Internship">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Associated Programs</label>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:13px;">
+        <label><input type="checkbox"> IT Support</label>
+        <label><input type="checkbox"> CRM</label>
+        <label><input type="checkbox"> Data Analysis</label>
+        <label><input type="checkbox"> Defensive Cybersecurity</label>
+        <label><input type="checkbox"> Project Management</label>
+        <label><input type="checkbox"> Network Technology</label>
+        <label><input type="checkbox"> HR Learning &amp; Development</label>
+        <label><input type="checkbox"> HR Talent Acquisition</label>
+        <label><input type="checkbox"> Community Health Worker</label>
+        <label><input type="checkbox"> Medical Coding</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Location Type</label>
+      <div class="radio-row">
+        <label><input type="radio" name="loctype" value="Remote" checked> Remote</label>
+        <label><input type="radio" name="loctype" value="Hybrid"> Hybrid</label>
+        <label><input type="radio" name="loctype" value="Onsite"> Onsite</label>
+      </div>
+      <input class="form-select" type="text" placeholder="City (if Hybrid/Onsite)" style="margin-top:8px;">
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+      <div class="form-group">
+        <label class="form-label">Open Seats</label>
+        <input class="form-select" type="number" placeholder="1" min="1">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Application Deadline</label>
+        <input class="form-select" type="date">
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+      <div class="form-group">
+        <label class="form-label">Contact Person</label>
+        <input class="form-select" type="text" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Contact Email</label>
+        <input class="form-select" type="email" placeholder="email@partner.com">
+      </div>
+    </div>
+
+    <!-- Tier-specific fields -->
+    <div id="tierL1Fields">
+      <div style="font-size:12px; font-weight:700; color:var(--color-normal-gray); text-transform:uppercase; letter-spacing:0.5px; margin:10px 0 6px;">L1 Internship Details</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+        <div class="form-group"><label class="form-label">Duration (weeks)</label><input class="form-select" type="number" placeholder="4"></div>
+        <div class="form-group"><label class="form-label">Stipend</label><label style="display:flex; align-items:center; gap:6px; margin-top:6px;"><input type="checkbox"> Paid</label></div>
+        <div class="form-group"><label class="form-label">Course-credit</label><label style="display:flex; align-items:center; gap:6px; margin-top:6px;"><input type="checkbox"> Eligible</label></div>
+      </div>
+    </div>
+    <div id="tierL2Fields" style="display:none;">
+      <div style="font-size:12px; font-weight:700; color:var(--color-normal-gray); text-transform:uppercase; letter-spacing:0.5px; margin:10px 0 6px;">L2 Full-time Details</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div class="form-group"><label class="form-label">Salary Range Min</label><input class="form-select" type="number" placeholder="60000"></div>
+        <div class="form-group"><label class="form-label">Salary Range Max</label><input class="form-select" type="number" placeholder="85000"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div class="form-group"><label class="form-label">Employment Type</label><select class="form-select"><option>W2</option><option>Contract</option></select></div>
+        <div class="form-group"><label class="form-label">Start Date Range</label><input class="form-select" type="text" placeholder="ASAP / Specific range"></div>
+      </div>
+    </div>
+    <div id="tierL3Fields" style="display:none;">
+      <div style="font-size:12px; font-weight:700; color:var(--color-normal-gray); text-transform:uppercase; letter-spacing:0.5px; margin:10px 0 6px;">L3 Apprenticeship Details</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div class="form-group"><label class="form-label">Cohort Size</label><input class="form-select" type="number" placeholder="20"></div>
+        <div class="form-group"><label class="form-label">Wage during training</label><input class="form-select" type="text" placeholder="$20/hr"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div class="form-group"><label style="display:flex; align-items:center; gap:6px;"><input type="checkbox"> WIOA-funded</label></div>
+        <div class="form-group"><label class="form-label">Program Sponsor</label><input class="form-select" type="text" placeholder="e.g., AlliedUP Co-op"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Commitment Length (months)</label><input class="form-select" type="number" placeholder="12"></div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('opportunityIntakeModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitOpportunity()">Save Opportunity</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 5: Cohort Matching -->
+<div class="modal-overlay" id="cohortMatchingModal" onclick="if(event.target===this) closeModal('cohortMatchingModal')">
+  <div class="modal large">
+    <button class="modal-close-x" aria-label="Close" onclick="closeModal('cohortMatchingModal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-title">Cohort Matching — L3 Apprenticeship</div>
+    <div class="modal-subtitle">AlliedUP Co-op · CHW Apprenticeship · Target: 20 students</div>
+    <div class="info-box">
+      <strong>Target cohort size:</strong> 20 &nbsp;·&nbsp;
+      <strong>Readiness threshold:</strong> 65 &nbsp;·&nbsp;
+      <strong>Program:</strong> Community Health Worker
+    </div>
+    <div class="form-group">
+      <table class="intake-table" style="width:100%; font-size:13px;">
+        <thead>
+          <tr><th style="width:28px;"></th><th>Name</th><th>Readiness</th><th>Program Progress</th><th>Location</th><th>In another cohort?</th></tr>
+        </thead>
+        <tbody id="cohortTbody">
+          <tr><td><input type="checkbox" class="cohort-pick" checked></td><td>Mariah Villalobos</td><td><strong>72</strong></td><td>58%</td><td>Oakland, CA</td><td>No</td></tr>
+          <tr><td><input type="checkbox" class="cohort-pick" checked></td><td>Jordan Lee</td><td><strong>85</strong></td><td>72%</td><td>Fresno, CA</td><td>No</td></tr>
+          <tr><td><input type="checkbox" class="cohort-pick" checked></td><td>Alex Chen</td><td><strong>81</strong></td><td>65%</td><td>San Jose, CA</td><td>No</td></tr>
+          <tr><td><input type="checkbox" class="cohort-pick" checked></td><td>Riya Patel</td><td><strong>78</strong></td><td>63%</td><td>Sacramento, CA</td><td>No</td></tr>
+          <tr><td><input type="checkbox" class="cohort-pick" checked></td><td>Marco Diaz</td><td><strong>76</strong></td><td>60%</td><td>Los Angeles, CA</td><td>No</td></tr>
+          <tr><td><input type="checkbox" class="cohort-pick"></td><td>Priya Reddy</td><td><strong>74</strong></td><td>55%</td><td>San Diego, CA</td><td>No</td></tr>
+          <tr><td><input type="checkbox" class="cohort-pick"></td><td>Sam Gonzalez</td><td><strong>71</strong></td><td>52%</td><td>San Francisco, CA</td><td>No</td></tr>
+          <tr><td><input type="checkbox" disabled></td><td style="color:var(--color-normal-gray);">Taylor Brown</td><td>68</td><td>50%</td><td>Oakland, CA</td><td style="color:var(--color-red);">Yes · Accenture CRM Cohort</td></tr>
+          <tr><td><input type="checkbox" class="cohort-pick"></td><td>Nina Okafor</td><td><strong>67</strong></td><td>48%</td><td>Long Beach, CA</td><td>No</td></tr>
+          <tr><td><input type="checkbox" class="cohort-pick"></td><td>Luis Martinez</td><td><strong>65</strong></td><td>46%</td><td>Bakersfield, CA</td><td>No</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
+      <button class="btn btn-outline btn-sm" onclick="cohortAutoFill()">Auto-fill to target size (20)</button>
+      <div style="font-size:13px;">Selected: <strong id="cohortCount">5</strong> / 20</div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('cohortMatchingModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitCohort()">Submit Cohort Referral</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 6: Partner Performance -->
+<div class="modal-overlay" id="partnerPerformanceModal" onclick="if(event.target===this) closeModal('partnerPerformanceModal')">
+  <div class="modal large">
+    <button class="modal-close-x" aria-label="Close" onclick="closeModal('partnerPerformanceModal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-title">Partner Performance · Last 90 days</div>
+    <div class="modal-subtitle">Click a partner to see details</div>
+    <div class="form-group">
+      <table class="intake-table" style="width:100%; font-size:13px;">
+        <thead>
+          <tr><th>Partner</th><th>Tier</th><th>Placement Rate</th><th>Offer Rate</th><th>Response</th><th>Feedback</th></tr>
+        </thead>
+        <tbody>
+          <tr class="clickable-row" onclick="openPartnerDetailModal('Parker Dewey')"><td>Parker Dewey</td><td><span class="tier-badge tier-l1">L1</span></td><td>62%</td><td>40%</td><td>4.2d</td><td>4.1</td></tr>
+          <tr class="clickable-row" onclick="openPartnerDetailModal('Snap Inc.')"><td>Snap Inc.</td><td><span class="tier-badge tier-l2">L2</span></td><td>45%</td><td>30%</td><td>7.5d</td><td>4.3</td></tr>
+          <tr class="clickable-row" onclick="openPartnerDetailModal('AlliedUP')"><td>AlliedUP</td><td><span class="tier-badge tier-l3">L3</span></td><td>85%</td><td>70%</td><td>2.1d</td><td>4.7</td></tr>
+          <tr class="clickable-row" onclick="openPartnerDetailModal('Accenture')"><td>Accenture</td><td><span class="tier-badge tier-l2">L2</span></td><td>28%</td><td>18%</td><td>12.4d</td><td>3.2 ⚠</td></tr>
+          <tr class="clickable-row" onclick="openPartnerDetailModal('Docusign')"><td>Docusign</td><td><span class="tier-badge tier-l2">L2</span></td><td>55%</td><td>38%</td><td>5.8d</td><td>4.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="closeModal('partnerPerformanceModal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 7: Partnership Hub -->
+<div class="modal-overlay" id="partnershipHubModal" onclick="if(event.target===this) closeModal('partnershipHubModal')">
+  <div class="modal xlarge">
+    <button class="modal-close-x" aria-label="Close" onclick="closeModal('partnershipHubModal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
+      <div>
+        <div class="modal-title">Partnership Hub</div>
+        <div class="modal-subtitle">Manage all partner opportunities across 3 tiers</div>
+      </div>
+      <button class="btn btn-primary" onclick="closeModal('partnershipHubModal'); openOpportunityIntakeModal();">+ Add Opportunity</button>
+    </div>
+    <div class="page-tabs">
+      <button class="page-tab active" id="hubTabL1" onclick="switchHubTab('L1')">L1 Internship <span class="count-pill">8</span></button>
+      <button class="page-tab" id="hubTabL2" onclick="switchHubTab('L2')">L2 Full-time <span class="count-pill">5</span></button>
+      <button class="page-tab" id="hubTabL3" onclick="switchHubTab('L3')">L3 Apprenticeship <span class="count-pill">2</span></button>
+    </div>
+    <div class="page-filter-bar">
+      <span>🔍</span>
+      <input type="text" id="hubSearch" placeholder="Search partners or roles..." oninput="filterHubRows()">
+      <span>📍</span>
+      <select id="hubLocation" onchange="filterHubRows()">
+        <option value="All">All locations</option>
+        <option value="Remote">Remote</option>
+        <option value="Hybrid">Hybrid</option>
+        <option value="Onsite">Onsite</option>
+      </select>
+    </div>
+    <div style="max-height:46vh; overflow-y:auto;">
+      <table class="page-data-table">
+        <thead>
+          <tr><th>Partner</th><th>Role</th><th>Program</th><th>Location</th><th>Seats</th><th>Deadline</th><th>Status</th><th style="width:140px;">Actions</th></tr>
+        </thead>
+        <tbody id="hubTbody"></tbody>
+      </table>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="closeModal('partnershipHubModal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 8: Opportunity Detail -->
+<div class="modal-overlay" id="opportunityDetailModal" onclick="if(event.target===this) closeModal('opportunityDetailModal')">
+  <div class="modal large">
+    <button class="modal-close-x" aria-label="Close" onclick="closeModal('opportunityDetailModal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px;">
+      <div>
+        <div class="modal-title" id="oppDetailTitle">Partner · Role</div>
+        <div class="modal-subtitle" id="oppDetailSub">Created by Rondy Yu · 3 days ago</div>
+      </div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <span class="tier-badge" id="oppDetailTier">L1</span>
+        <span class="status-pill green">Open</span>
+      </div>
+    </div>
+    <div style="font-size:12px; font-weight:700; color:var(--color-normal-gray); text-transform:uppercase; letter-spacing:0.5px; margin:10px 0 6px;">Overview</div>
+    <ul id="oppDetailOverview" style="list-style:none; padding:0; font-size:13px; line-height:1.8;">
+      <!-- filled dynamically -->
+    </ul>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin:18px 0 8px;">
+      <div style="font-size:12px; font-weight:700; color:var(--color-normal-gray); text-transform:uppercase; letter-spacing:0.5px;">Matched Students (Readiness ≥ 65)</div>
+      <span style="background:var(--color-brightest-gray); color:var(--color-dark-gray); padding:2px 10px; border-radius:999px; font-size:11px; font-weight:700;">6</span>
+    </div>
+    <table class="page-data-table">
+      <thead><tr><th>Student</th><th>Readiness</th><th style="width:120px;">Action</th></tr></thead>
+      <tbody id="oppDetailStudents">
+        <tr><td>Mariah Villalobos</td><td><strong>72</strong></td><td><button class="btn btn-outline btn-sm" onclick="closeModal('opportunityDetailModal'); openMatchedReferralModal(currentOppPartner, currentOppRole, 72);">Refer →</button></td></tr>
+        <tr><td>Luis Rivas</td><td><strong>88</strong></td><td><button class="btn btn-outline btn-sm" onclick="closeModal('opportunityDetailModal'); openMatchedReferralModal(currentOppPartner, currentOppRole, 88);">Refer →</button></td></tr>
+        <tr><td>Ekaterina M.</td><td><strong>81</strong></td><td><button class="btn btn-outline btn-sm" onclick="closeModal('opportunityDetailModal'); openMatchedReferralModal(currentOppPartner, currentOppRole, 81);">Refer →</button></td></tr>
+        <tr><td>Ahmed K.</td><td><strong>76</strong></td><td><button class="btn btn-outline btn-sm" onclick="closeModal('opportunityDetailModal'); openMatchedReferralModal(currentOppPartner, currentOppRole, 76);">Refer →</button></td></tr>
+        <tr><td>Katie S.</td><td><strong>68</strong></td><td><button class="btn btn-outline btn-sm" onclick="closeModal('opportunityDetailModal'); openMatchedReferralModal(currentOppPartner, currentOppRole, 68);">Refer →</button></td></tr>
+        <tr><td>Richard B.</td><td><strong>65</strong></td><td><button class="btn btn-outline btn-sm" onclick="closeModal('opportunityDetailModal'); openMatchedReferralModal(currentOppPartner, currentOppRole, 65);">Refer →</button></td></tr>
+      </tbody>
+    </table>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeOpportunity()">Close Opportunity</button>
+      <button class="btn btn-primary" onclick="closeModal('opportunityDetailModal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 9: Referral Management -->
+<div class="modal-overlay" id="referralManagementModal" onclick="if(event.target===this) closeModal('referralManagementModal')">
+  <div class="modal xxlarge">
+    <button class="modal-close-x" aria-label="Close" onclick="closeModal('referralManagementModal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-title">Referral Management</div>
+    <div class="modal-subtitle">All active referrals for your student caseload</div>
+    <div class="page-tabs">
+      <button class="page-tab active" id="rmTabAll" onclick="switchRMTab('all')">All <span class="count-pill">12</span></button>
+      <button class="page-tab" id="rmTabActive" onclick="switchRMTab('active')">Active <span class="count-pill">8</span></button>
+      <button class="page-tab" id="rmTabStale" onclick="switchRMTab('stale')">Stale &gt; 14d <span class="count-pill">2</span></button>
+      <button class="page-tab" id="rmTabClosed" onclick="switchRMTab('closed')">Closed <span class="count-pill">2</span></button>
+    </div>
+    <div class="page-filter-bar">
+      <span style="font-weight:700; color:var(--color-dark-gray);">Filter:</span>
+      <select id="rmFilterTier" onchange="filterRMRows()"><option value="All">All Tiers</option><option>L1</option><option>L2</option><option>L3</option></select>
+      <select id="rmFilterStatus" onchange="filterRMRows()"><option value="All">All Status</option><option>Referred</option><option>Partner Reviewed</option><option>Interview Scheduled</option><option>Interview Completed</option><option>Offer Extended</option><option>Offer Accepted</option><option>Rejected</option><option>Withdrawn</option></select>
+      <select id="rmFilterPartner" onchange="filterRMRows()"><option value="All">All Partners</option><option>Parker Dewey</option><option>Snap Inc.</option><option>AlliedUP</option><option>Accenture</option><option>Docusign</option><option>Bay Area Council</option></select>
+    </div>
+    <div style="max-height:48vh; overflow-y:auto;">
+      <table class="page-data-table">
+        <thead>
+          <tr><th>Student</th><th>Partner</th><th>Tier</th><th>Role</th><th>Status</th><th>Last Updated</th><th style="width:120px;">Actions</th></tr>
+        </thead>
+        <tbody id="rmTbody"></tbody>
+      </table>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="closeModal('referralManagementModal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 10: Cohort Status (post-submit) -->
+<div class="modal-overlay" id="cohortStatusModal" onclick="if(event.target===this) closeModal('cohortStatusModal')">
+  <div class="modal large">
+    <button class="modal-close-x" aria-label="Close" onclick="closeModal('cohortStatusModal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div style="font-size:28px; color:var(--color-normal-green); margin-bottom:4px;">✓</div>
+    <div class="modal-title">Cohort Referral Submitted</div>
+    <div class="modal-subtitle" id="cohortStatusSub">AlliedUP Co-op · CHW Apprenticeship · Spring 2026</div>
+    <div style="font-size:12px; font-weight:700; color:var(--color-normal-gray); text-transform:uppercase; letter-spacing:0.5px; margin:12px 0 4px;">Rollup</div>
+    <div class="rollup-grid">
+      <div class="rollup-stat"><div class="rollup-val" id="roSubmitted">0</div><div class="rollup-lbl">Submitted</div></div>
+      <div class="rollup-stat"><div class="rollup-val">0</div><div class="rollup-lbl">Reviewed</div></div>
+      <div class="rollup-stat"><div class="rollup-val">0</div><div class="rollup-lbl">Interviewed</div></div>
+      <div class="rollup-stat"><div class="rollup-val">0</div><div class="rollup-lbl">Offered</div></div>
+      <div class="rollup-stat"><div class="rollup-val">0</div><div class="rollup-lbl">Accepted</div></div>
+      <div class="rollup-stat"><div class="rollup-val">0</div><div class="rollup-lbl">Declined</div></div>
+    </div>
+    <div class="message info" style="margin-bottom:14px;">⏱ Partner notified. Avg response time for AlliedUP: <strong>2.1 days</strong></div>
+    <div style="font-size:12px; font-weight:700; color:var(--color-normal-gray); text-transform:uppercase; letter-spacing:0.5px; margin:6px 0;">Student Status</div>
+    <div style="max-height:200px; overflow-y:auto;">
+      <table class="page-data-table">
+        <thead><tr><th>Student</th><th>Status</th><th style="width:90px;">Lock</th></tr></thead>
+        <tbody id="cohortStudentsTbody"></tbody>
+      </table>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('cohortStatusModal'); openReferralManagementModal();">View in Referral Management</button>
+      <button class="btn btn-primary" onclick="closeModal('cohortStatusModal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 11: Partner Detail -->
+<div class="modal-overlay" id="partnerDetailModal" onclick="if(event.target===this) closeModal('partnerDetailModal')">
+  <div class="modal large">
+    <button class="modal-close-x" aria-label="Close" onclick="closeModal('partnerDetailModal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-title" id="pdmTitle">Partner · Tier</div>
+    <div class="modal-subtitle" id="pdmSub">90-day performance window</div>
+    <div id="pdmLpBanner" style="display:none;" class="lp-banner">⚠ Feedback score below 3.5 in last 90 days — consider discussing with partnership team before high-volume referrals.</div>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+      <div style="font-size:12px; color:var(--color-normal-gray);">Adjust window:</div>
+      <div class="window-group">
+        <button onclick="setPdmWindow(30, this)">30d</button>
+        <button class="active" onclick="setPdmWindow(90, this)">90d</button>
+        <button onclick="setPdmWindow(365, this)">365d</button>
+        <button onclick="setPdmWindow(0, this)">All</button>
+      </div>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-stat"><div class="kpi-val" id="pdmPlacement">—</div><div class="kpi-lbl">Placement Rate</div></div>
+      <div class="kpi-stat"><div class="kpi-val" id="pdmOffer">—</div><div class="kpi-lbl">Offer Rate</div></div>
+      <div class="kpi-stat"><div class="kpi-val" id="pdmResponse">—</div><div class="kpi-lbl">Response Time</div></div>
+      <div class="kpi-stat"><div class="kpi-val" id="pdmFeedback">—</div><div class="kpi-lbl">Feedback</div></div>
+    </div>
+    <div style="font-size:12px; font-weight:700; color:var(--color-normal-gray); text-transform:uppercase; letter-spacing:0.5px; margin:8px 0 6px;">Trend (last 90 days)</div>
+    <div style="padding:12px 10px; background:var(--color-brightest-gray); border-radius:4px; margin-bottom:14px;">
+      <div class="spark-row"><span>Wk 1</span><div class="spark-bar"><div class="spark-fill" style="width:55%"></div></div><span>55%</span></div>
+      <div class="spark-row"><span>Wk 2</span><div class="spark-bar"><div class="spark-fill" style="width:62%"></div></div><span>62%</span></div>
+      <div class="spark-row"><span>Wk 3</span><div class="spark-bar"><div class="spark-fill" style="width:68%"></div></div><span>68%</span></div>
+      <div class="spark-row"><span>Wk 4</span><div class="spark-bar"><div class="spark-fill" style="width:74%"></div></div><span>74%</span></div>
+      <div class="spark-row"><span>Wk 5</span><div class="spark-bar"><div class="spark-fill" style="width:70%"></div></div><span>70%</span></div>
+      <div class="spark-row" style="margin-bottom:0;"><span>Wk 6</span><div class="spark-bar"><div class="spark-fill" style="width:78%"></div></div><span>78%</span></div>
+    </div>
+    <div style="font-size:12px; font-weight:700; color:var(--color-normal-gray); text-transform:uppercase; letter-spacing:0.5px; margin:6px 0 6px;">Recent Placements</div>
+    <ul id="pdmPlacements" style="font-size:13px; list-style:none; padding:0;"></ul>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="closeModal('partnerDetailModal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">Saved</div>
+
+<script src="../shared/state.js"></script>
+<script>
+function el(tag, opts, children) {
+  const node = document.createElement(tag);
+  if (opts) {
+    if (opts.cls) node.className = opts.cls;
+    if (opts.text != null) node.textContent = opts.text;
+    if (opts.attrs) for (const k in opts.attrs) node.setAttribute(k, opts.attrs[k]);
+    if (opts.style) for (const k in opts.style) node.style[k] = opts.style[k];
+    if (opts.on) for (const k in opts.on) node.addEventListener(k, opts.on[k]);
+  }
+  if (children) children.forEach(c => c && node.appendChild(c));
+  return node;
+}
+function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+
+function toggleSection(h){
+  const b = h.nextElementSibling;
+  h.classList.toggle('collapsed');
+  b.classList.toggle('hidden');
+}
+function toggleActionTan(h){
+  const list = h.nextElementSibling;
+  h.classList.toggle('collapsed');
+  list.classList.toggle('hidden');
+}
+function toggleSubGroup(h){
+  const b = h.nextElementSibling;
+  h.classList.toggle('collapsed');
+  if (b && b.classList.contains('sub-body')) b.classList.toggle('hidden');
+}
+function openModal(id){ document.getElementById(id).classList.add('active'); }
+function closeModal(id){ document.getElementById(id).classList.remove('active'); }
+// === Career Partnership — Modal 1: Matched Referral ===
+function openMatchedReferralModal(partnerName, roleTitle, matchScore){
+  document.getElementById('mrmTitle').textContent = 'Refer to ' + partnerName;
+  document.getElementById('mrmSubtitle').textContent = 'Send this student to ' + roleTitle;
+  const tierEl = document.getElementById('mrmTier');
+  // Infer tier for display (just cosmetic in prototype)
+  tierEl.className = 'tier-badge ' + (partnerName === 'Snap Inc.' || partnerName === 'Docusign' ? 'tier-l2' : 'tier-l1');
+  tierEl.textContent = tierEl.className.includes('l2') ? 'L2' : 'L1';
+  document.getElementById('mrmScore').textContent = 'Match ' + matchScore;
+  document.getElementById('mrmOverrideWrap').style.display = matchScore < 70 ? 'block' : 'none';
+  openModal('matchedReferralModal');
+}
+function submitMatchedReferral(){
+  const overrideWrap = document.getElementById('mrmOverrideWrap');
+  if (overrideWrap.style.display === 'block') {
+    const txt = document.getElementById('mrmOverride').value.trim();
+    if (txt.length < 20) { alert('Override justification must be at least 20 characters.'); return; }
+  }
+  const notify = document.getElementById('mrmNotify').checked;
+  closeModal('matchedReferralModal');
+  showToast('✓ Referral sent' + (notify ? ' · student notified' : '') + '. Logged in activity feed.');
+  addActivity('#001E5A', 'JUST NOW', 'Partner referral sent', document.getElementById('mrmTitle').textContent);
+}
+
+// === Modal 2: Counselor Confidence ===
+function openCounselorConfidenceModal(){ openModal('counselorConfidenceModal'); }
+function submitCounselorConfidence(){
+  const pick = document.querySelector('input[name="confidence"]:checked');
+  const rating = pick ? pick.value : '3';
+  closeModal('counselorConfidenceModal');
+  showToast('✓ Counselor Confidence saved: ' + rating + '/5');
+  addActivity('#F5BB11', 'JUST NOW', 'Counselor Confidence updated', rating + '/5 for Mariah Villalobos');
+}
+
+// === Modal 3: Status Update ===
+function openStatusUpdateModal(partnerName, roleTitle, currentStatus){
+  document.getElementById('sumSubtitle').textContent = partnerName + ' · ' + roleTitle;
+  document.getElementById('sumCurrent').textContent = currentStatus;
+  const ts = new Date();
+  document.getElementById('sumTimestamp').value = ts.toLocaleString();
+  document.getElementById('sumNext').value = currentStatus;
+  onStatusChange();
+  openModal('statusUpdateModal');
+}
+function onStatusChange(){
+  const val = document.getElementById('sumNext').value;
+  document.getElementById('sumPlacedWrap').style.display = (val === 'Offer Accepted') ? 'block' : 'none';
+}
+function submitStatusUpdate(){
+  const next = document.getElementById('sumNext').value;
+  const placed = document.getElementById('sumPlaced').checked && next === 'Offer Accepted';
+  closeModal('statusUpdateModal');
+  showToast('✓ Status updated to ' + next + (placed ? ' · marked as Placed' : ''));
+  addActivity('#0DA820', 'JUST NOW', 'Referral status updated', next);
+}
+
+// === Modal 4: Opportunity Intake ===
+function openOpportunityIntakeModal(){ onTierChange(); openModal('opportunityIntakeModal'); }
+function onTierChange(){
+  const pick = document.querySelector('input[name="tier"]:checked');
+  const tier = pick ? pick.value : 'L1';
+  document.getElementById('tierL1Fields').style.display = tier === 'L1' ? 'block' : 'none';
+  document.getElementById('tierL2Fields').style.display = tier === 'L2' ? 'block' : 'none';
+  document.getElementById('tierL3Fields').style.display = tier === 'L3' ? 'block' : 'none';
+}
+function submitOpportunity(){
+  const pick = document.querySelector('input[name="tier"]:checked');
+  const tier = pick ? pick.value : 'L1';
+  closeModal('opportunityIntakeModal');
+  showToast('✓ Opportunity saved · visible in Partnership Hub');
+  addActivity('#001E5A', 'JUST NOW', 'New partner opportunity created', tier + ' tier');
+  setTimeout(() => openPartnershipHubModal(tier), 500);
+}
+
+// === Modal 5: Cohort Matching ===
+function openCohortMatchingModal(){ updateCohortCount(); openModal('cohortMatchingModal'); }
+function updateCohortCount(){
+  const selected = document.querySelectorAll('.cohort-pick:checked').length;
+  const el = document.getElementById('cohortCount');
+  if (el) el.textContent = selected;
+}
+function cohortAutoFill(){
+  const boxes = document.querySelectorAll('.cohort-pick');
+  boxes.forEach(b => { if (!b.disabled) b.checked = true; });
+  updateCohortCount();
+}
+document.addEventListener('change', function(e){
+  if (e.target && e.target.classList && e.target.classList.contains('cohort-pick')) updateCohortCount();
+});
+function submitCohort(){
+  const checkedRows = document.querySelectorAll('.cohort-pick:checked');
+  const students = Array.from(checkedRows).map(cb => {
+    const tr = cb.closest('tr');
+    return tr ? tr.cells[1].textContent.trim() : 'Student';
+  });
+  const count = students.length;
+  closeModal('cohortMatchingModal');
+  showToast('✓ Cohort Referral submitted · ' + count + ' students');
+  addActivity('#FF9D26', 'JUST NOW', 'Cohort referral submitted', count + ' students to AlliedUP CHW');
+  openCohortStatusModal({ partnerName: 'AlliedUP Co-op', role: 'CHW Apprenticeship · Spring 2026', students });
+}
+
+// === Modal 6: Partner Performance ===
+function openPartnerPerformanceModal(){ openModal('partnerPerformanceModal'); }
+
+// ============================================================
+// === Helpers for building rows via DOM (safer than innerHTML) ===
+// ============================================================
+function mkTd(text, cls){ const td = document.createElement('td'); if (cls) td.className = cls; td.textContent = text != null ? String(text) : ''; return td; }
+function mkCell(children, cls){ const td = document.createElement('td'); if (cls) td.className = cls; children.forEach(c => c && td.appendChild(c)); return td; }
+function mkSpan(text, cls){ const s = document.createElement('span'); if (cls) s.className = cls; s.textContent = text; return s; }
+function mkBtn(text, cls, onClick){ const b = document.createElement('button'); b.className = cls; b.textContent = text; b.addEventListener('click', onClick); return b; }
+function clearNode(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+
+// ============================================================
+// === Modal 7: Partnership Hub (page-level)                  ===
+// ============================================================
+
+const hubData = {
+  L1: [
+    { id:'pd-crm',   partner:'Parker Dewey',   role:'CRM Micro-Internship',   program:'CRM',         location:'Remote', seats:3, deadline:'5 days',   stipend:'$500 paid', duration:'4 weeks', credit:true, contact:'John Smith · jsmith@parkerdewey.com' },
+    { id:'pd-data',  partner:'Parker Dewey',   role:'Data Micro-Internship',  program:'Data Analysis', location:'Remote', seats:2, deadline:'8 days',   stipend:'$500 paid', duration:'4 weeks', credit:true, contact:'John Smith · jsmith@parkerdewey.com' },
+    { id:'snap-it',  partner:'Snap Inc.',      role:'IT Support Intern',      program:'IT Support',  location:'Hybrid', seats:1, deadline:'10 days',  stipend:'Paid',      duration:'8 weeks', credit:false, contact:'Erin Wang · ewang@snap.com' },
+    { id:'acc-crm',  partner:'Accenture',      role:'CRM Support Intern',     program:'CRM',         location:'Remote', seats:4, deadline:'20 days',  stipend:'Paid',      duration:'6 weeks', credit:false, contact:'Dana Lee · dana.lee@accenture.com' },
+    { id:'bac-chw',  partner:'Bay Area Council', role:'CHW Field Intern',     program:'Community Health Worker', location:'Onsite', seats:2, deadline:'14 days', stipend:'Paid', duration:'10 weeks', credit:true, contact:'Ana M. · ana@bayareacouncil.org' },
+    { id:'kre-hr',   partner:'Kresge Foundation', role:'HR L&D Intern',       program:'HR Learning & Development', location:'Hybrid', seats:1, deadline:'18 days', stipend:'Paid', duration:'8 weeks', credit:true, contact:'Paula R. · pr@kresge.org' },
+    { id:'uci-data', partner:'UCI',            role:'Research Data Intern',   program:'Data Analysis', location:'Hybrid', seats:2, deadline:'22 days', stipend:'Unpaid', duration:'12 weeks', credit:true, contact:'Prof. N · noah@uci.edu' },
+    { id:'doc-qa',   partner:'DocuSign',       role:'QA Intern',              program:'IT Support',  location:'Remote', seats:1, deadline:'30 days',  stipend:'Paid',      duration:'10 weeks', credit:false, contact:'Ricardo S. · rs@docusign.com' },
+  ],
+  L2: [
+    { id:'snap-ft',  partner:'Snap Inc.',      role:'Junior Data Analyst',    program:'Data Analysis', location:'Hybrid', seats:2, deadline:'12 days', salary:'$75k-$85k', type:'W2', start:'ASAP', contact:'Vivian J. · vj@snap.com' },
+    { id:'acc-ft',   partner:'Accenture',      role:'Associate Consultant',   program:'Project Management', location:'Hybrid', seats:3, deadline:'25 days', salary:'$70k-$80k', type:'W2', start:'Jun 2026', contact:'Dana Lee · dana.lee@accenture.com' },
+    { id:'doc-se',   partner:'Docusign',       role:'Support Engineer',       program:'IT Support', location:'Remote', seats:1, deadline:'30 days', salary:'$68k-$78k', type:'W2', start:'ASAP', contact:'Ricardo S. · rs@docusign.com' },
+    { id:'nea-hr',   partner:'National Ed Assoc', role:'HR Coordinator',      program:'HR Talent Acquisition', location:'Onsite', seats:1, deadline:'40 days', salary:'$55k-$65k', type:'W2', start:'Jul 2026', contact:'Karen B. · kb@nea.org' },
+    { id:'tc-pm',    partner:'Teachers College', role:'Program Manager',     program:'Project Management', location:'Hybrid', seats:1, deadline:'35 days', salary:'$78k-$92k', type:'W2', start:'Jun 2026', contact:'Sheila K. · sk@tc.edu' },
+  ],
+  L3: [
+    { id:'au-chw',   partner:'AlliedUP Co-op', role:'CHW Apprenticeship · Spring 2026', program:'Community Health Worker', location:'Hybrid', seats:20, deadline:'7 days', wage:'$20/hr', wioa:true, sponsor:'AlliedUP Co-op', commitment:'12 months', contact:'Priya T. · pt@alliedup.coop', isCohort:true },
+    { id:'wfa-cyb',  partner:'Workforce Alliance Bay Area', role:'Cybersecurity Apprenticeship', program:'Defensive Cybersecurity', location:'Onsite', seats:12, deadline:'18 days', wage:'$22/hr', wioa:true, sponsor:'WABA', commitment:'15 months', contact:'Marcus V. · mv@wfaba.org', isCohort:true },
+  ]
+};
+
+let currentHubTier = 'L1';
+let currentOppPartner = '';
+let currentOppRole = '';
+
+function openPartnershipHubModal(initialTier){
+  currentHubTier = initialTier || 'L1';
+  ['L1','L2','L3'].forEach(t => document.getElementById('hubTab'+t).classList.toggle('active', t === currentHubTier));
+  renderHubRows();
+  openModal('partnershipHubModal');
+}
+function switchHubTab(tier){
+  currentHubTier = tier;
+  ['L1','L2','L3'].forEach(t => document.getElementById('hubTab'+t).classList.toggle('active', t === tier));
+  renderHubRows();
+}
+function renderHubRows(){
+  const rows = hubData[currentHubTier] || [];
+  const tbody = document.getElementById('hubTbody');
+  clearNode(tbody);
+  const tierCls = 'tier-'+currentHubTier.toLowerCase();
+  rows.forEach(o => {
+    const tr = document.createElement('tr');
+    tr.setAttribute('data-location', o.location);
+    tr.setAttribute('data-search', (o.partner+' '+o.role).toLowerCase());
+    const badge = mkSpan(currentHubTier, 'tier-badge '+tierCls); badge.style.marginRight = '6px';
+    tr.appendChild(mkCell([badge, document.createTextNode(o.partner)]));
+    tr.appendChild(mkTd(o.role));
+    tr.appendChild(mkTd(o.program));
+    tr.appendChild(mkTd(o.location));
+    tr.appendChild(mkTd(String(o.seats)));
+    tr.appendChild(mkTd(o.deadline));
+    tr.appendChild(mkCell([mkSpan('Open', 'status-pill green')]));
+    const actionCell = document.createElement('td');
+    actionCell.appendChild(mkBtn('View', 'btn btn-outline btn-sm', () => openOpportunityDetailModal(o.id)));
+    if (currentHubTier === 'L3' && o.isCohort) {
+      const cohortBtn = mkBtn('Cohort →', 'btn btn-outline btn-sm', () => { closeModal('partnershipHubModal'); openCohortMatchingModal(); });
+      cohortBtn.style.marginLeft = '6px';
+      actionCell.appendChild(cohortBtn);
+    }
+    tr.appendChild(actionCell);
+    tbody.appendChild(tr);
+  });
+  filterHubRows();
+}
+function filterHubRows(){
+  const q = (document.getElementById('hubSearch').value || '').toLowerCase();
+  const loc = document.getElementById('hubLocation').value;
+  document.querySelectorAll('#hubTbody tr').forEach(tr => {
+    const matchSearch = !q || tr.getAttribute('data-search').includes(q);
+    const matchLoc = loc === 'All' || tr.getAttribute('data-location') === loc;
+    tr.style.display = (matchSearch && matchLoc) ? '' : 'none';
+  });
+}
+
+// ============================================================
+// === Modal 8: Opportunity Detail                            ===
+// ============================================================
+
+function findOpportunity(id){
+  for (const t of ['L1','L2','L3']) {
+    const found = hubData[t].find(o => o.id === id);
+    if (found) return { tier:t, opp:found };
+  }
+  return null;
+}
+function openOpportunityDetailModal(oppId){
+  const r = findOpportunity(oppId);
+  if (!r) return;
+  const { tier, opp } = r;
+  currentOppPartner = opp.partner;
+  currentOppRole = opp.role;
+  const tierBadge = document.getElementById('oppDetailTier');
+  tierBadge.className = 'tier-badge tier-'+tier.toLowerCase();
+  tierBadge.textContent = tier;
+  document.getElementById('oppDetailTitle').textContent = opp.partner + ' · ' + opp.role;
+  document.getElementById('oppDetailSub').textContent = 'Created by Rondy Yu · 3 days ago';
+  const ov = document.getElementById('oppDetailOverview');
+  clearNode(ov);
+  const addLi = (labelText, valueText) => {
+    const li = document.createElement('li');
+    const b = document.createElement('strong');
+    b.textContent = labelText;
+    li.appendChild(document.createTextNode('• '));
+    li.appendChild(b);
+    li.appendChild(document.createTextNode(' ' + valueText));
+    ov.appendChild(li);
+  };
+  addLi('Programs:', opp.program);
+  addLi('Location:', opp.location);
+  addLi('Seats:', opp.seats + ' open');
+  addLi('Deadline:', opp.deadline);
+  if (tier === 'L1') {
+    addLi('Stipend:', opp.stipend + ' · Course-credit: ' + (opp.credit ? 'Yes' : 'No'));
+    addLi('Duration:', opp.duration);
+  } else if (tier === 'L2') {
+    addLi('Salary:', opp.salary + ' · Type: ' + opp.type);
+    addLi('Start:', opp.start);
+  } else {
+    addLi('Cohort size:', opp.seats + ' · Wage: ' + opp.wage);
+    addLi('WIOA-funded:', (opp.wioa ? 'Yes' : 'No') + ' · Sponsor: ' + opp.sponsor);
+    addLi('Commitment:', opp.commitment);
+  }
+  addLi('Partner contact:', opp.contact);
+  openModal('opportunityDetailModal');
+}
+function closeOpportunity(){
+  if (!confirm('Close this opportunity? No further referrals can be added.')) return;
+  closeModal('opportunityDetailModal');
+  showToast('✓ Opportunity closed.');
+  addActivity('#999', 'JUST NOW', 'Opportunity closed', currentOppPartner + ' · ' + currentOppRole);
+}
+
+// ============================================================
+// === Modal 9: Referral Management (page-level)              ===
+// ============================================================
+
+const rmData = [
+  { student:'Mariah Villalobos', partner:'Parker Dewey',  tier:'L1', role:'CRM Micro-Intern',      status:'Interview Scheduled', updated:'3 days ago',  days:3,  stale:false, closed:false },
+  { student:'Luis Rivas',        partner:'Accenture',     tier:'L2', role:'Associate Consultant',  status:'Partner Reviewed',    updated:'8 days ago',  days:8,  stale:false, closed:false },
+  { student:'David Kim',         partner:'Snap Inc.',     tier:'L2', role:'Jr Data Analyst',       status:'Referred',            updated:'16 days ago', days:16, stale:true,  closed:false },
+  { student:'Ekaterina M.',      partner:'Parker Dewey',  tier:'L1', role:'Data Micro-Intern',     status:'Offer Extended',      updated:'5 days ago',  days:5,  stale:false, closed:false },
+  { student:'Ahmed K.',          partner:'Bay Area Council', tier:'L1', role:'CHW Field Intern',   status:'Partner Reviewed',    updated:'9 days ago',  days:9,  stale:false, closed:false },
+  { student:'Katie S.',          partner:'Docusign',      tier:'L2', role:'Support Engineer',      status:'Interview Completed', updated:'2 days ago',  days:2,  stale:false, closed:false },
+  { student:'Richard B.',        partner:'DocuSign',      tier:'L1', role:'QA Intern',             status:'Referred',            updated:'18 days ago', days:18, stale:true,  closed:false },
+  { student:'Priya T.',          partner:'AlliedUP',      tier:'L3', role:'CHW Apprentice',        status:'Interview Scheduled', updated:'4 days ago',  days:4,  stale:false, closed:false },
+  { student:'Jon Taylor',        partner:'AlliedUP',      tier:'L3', role:'CHW Apprentice',        status:'Offer Accepted',      updated:'15 days ago', days:15, stale:false, closed:true },
+  { student:'Maria Gonzalez',    partner:'Snap Inc.',     tier:'L2', role:'Jr Data Analyst',       status:'Rejected',            updated:'25 days ago', days:25, stale:false, closed:true },
+  { student:'Sam Chen',          partner:'Accenture',     tier:'L2', role:'Associate Consultant',  status:'Partner Reviewed',    updated:'6 days ago',  days:6,  stale:false, closed:false },
+  { student:'Nina Okafor',       partner:'Parker Dewey',  tier:'L1', role:'CRM Micro-Intern',      status:'Interview Completed', updated:'1 days ago',  days:1,  stale:false, closed:false },
+];
+
+let currentRMTab = 'all';
+
+function openReferralManagementModal(){
+  currentRMTab = 'all';
+  ['All','Active','Stale','Closed'].forEach(t => {
+    const k = t.toLowerCase();
+    const node = document.getElementById('rmTab'+t);
+    if (node) node.classList.toggle('active', k === currentRMTab);
+  });
+  renderRMRows();
+  openModal('referralManagementModal');
+}
+function switchRMTab(filter){
+  currentRMTab = filter;
+  ['All','Active','Stale','Closed'].forEach(t => {
+    const k = t.toLowerCase();
+    const node = document.getElementById('rmTab'+t);
+    if (node) node.classList.toggle('active', k === filter);
+  });
+  renderRMRows();
+}
+function statusClass(s){
+  const m = { 'Referred':'st-referred', 'Partner Reviewed':'st-reviewed', 'Interview Scheduled':'st-interview', 'Interview Completed':'st-interview', 'Offer Extended':'st-offerext', 'Offer Accepted':'st-accepted', 'Rejected':'st-closed', 'Withdrawn':'st-closed', 'Offer Declined':'st-closed' };
+  return m[s] || 'st-closed';
+}
+function renderRMRows(){
+  let rows = rmData.slice();
+  if (currentRMTab === 'active') rows = rows.filter(r => !r.closed);
+  else if (currentRMTab === 'stale') { rows = rows.filter(r => r.stale); rows.sort((a,b) => b.days - a.days); }
+  else if (currentRMTab === 'closed') rows = rows.filter(r => r.closed);
+  const tbody = document.getElementById('rmTbody');
+  clearNode(tbody);
+  rows.forEach(r => {
+    const tr = document.createElement('tr');
+    if (r.stale) tr.classList.add('stale-row');
+    tr.setAttribute('data-tier', r.tier);
+    tr.setAttribute('data-status', r.status);
+    tr.setAttribute('data-partner', r.partner);
+    tr.appendChild(mkTd(r.student));
+    tr.appendChild(mkTd(r.partner));
+    tr.appendChild(mkCell([mkSpan(r.tier, 'tier-badge tier-'+r.tier.toLowerCase())]));
+    tr.appendChild(mkTd(r.role));
+    tr.appendChild(mkCell([mkSpan(r.status, 'st-badge ' + statusClass(r.status))]));
+    tr.appendChild(mkTd(r.updated));
+    const actionCell = document.createElement('td');
+    actionCell.appendChild(mkBtn('Update', 'btn btn-outline btn-sm', () => {
+      closeModal('referralManagementModal');
+      openStatusUpdateModal(r.partner, r.role, r.status);
+    }));
+    tr.appendChild(actionCell);
+    tbody.appendChild(tr);
+  });
+  filterRMRows();
+}
+function filterRMRows(){
+  const ft = document.getElementById('rmFilterTier').value;
+  const fs = document.getElementById('rmFilterStatus').value;
+  const fp = document.getElementById('rmFilterPartner').value;
+  document.querySelectorAll('#rmTbody tr').forEach(tr => {
+    const mt = ft === 'All' || tr.getAttribute('data-tier') === ft;
+    const ms = fs === 'All' || tr.getAttribute('data-status') === fs;
+    const mp = fp === 'All' || tr.getAttribute('data-partner') === fp;
+    tr.style.display = (mt && ms && mp) ? '' : 'none';
+  });
+}
+
+// ============================================================
+// === Modal 10: Cohort Status (post-submit)                  ===
+// ============================================================
+
+function openCohortStatusModal(cohortData){
+  document.getElementById('cohortStatusSub').textContent = cohortData.partnerName + ' · ' + cohortData.role;
+  document.getElementById('roSubmitted').textContent = String(cohortData.students.length);
+  const tbody = document.getElementById('cohortStudentsTbody');
+  clearNode(tbody);
+  cohortData.students.forEach(name => {
+    const tr = document.createElement('tr');
+    tr.appendChild(mkTd(name));
+    tr.appendChild(mkCell([mkSpan('Submitted', 'st-badge st-referred')]));
+    tr.appendChild(mkCell([mkSpan('🔒 Locked', 'lock-badge')]));
+    tbody.appendChild(tr);
+  });
+  openModal('cohortStatusModal');
+}
+
+// ============================================================
+// === Modal 11: Partner Detail                               ===
+// ============================================================
+
+const partnerMetrics = {
+  'Parker Dewey': { tier:'L1', placement:'62%', offer:'40%', response:'4.2 days', feedback:'4.1/5', lowPerf:false, placements:['Maya R. → CRM Micro-Intern · Accepted 3 weeks','Tom H. → Data Micro-Intern · Accepted 6 weeks','Elena G. → CRM Micro-Intern · Rejected 4 weeks'] },
+  'Snap Inc.':    { tier:'L2', placement:'45%', offer:'30%', response:'7.5 days', feedback:'4.3/5', lowPerf:false, placements:['Noor A. → Jr Data Analyst · Accepted 2 weeks','Derek L. → IT Intern · Offer pending','Jess P. → Jr Data Analyst · Declined 5 weeks'] },
+  'AlliedUP':     { tier:'L3', placement:'85%', offer:'70%', response:'2.1 days', feedback:'4.7/5', lowPerf:false, placements:['Maria Gonzalez → CHW Apprentice · Accepted 2 weeks','Jon Taylor → CHW Apprentice · Accepted 5 weeks','Priya T. → CHW Apprentice · Interview scheduled'] },
+  'Accenture':    { tier:'L2', placement:'28%', offer:'18%', response:'12.4 days', feedback:'3.2/5 ⚠', lowPerf:true,  placements:['Kevin J. → Associate Consultant · Rejected 4 weeks','Sana W. → Associate Consultant · Withdrawn 8 weeks'] },
+  'Docusign':     { tier:'L2', placement:'55%', offer:'38%', response:'5.8 days', feedback:'4.0/5', lowPerf:false, placements:['Ricardo S. → Support Engineer · Accepted 3 weeks','Fatima O. → Support Engineer · Offer extended'] },
+};
+
+function openPartnerDetailModal(partnerName){
+  const m = partnerMetrics[partnerName];
+  if (!m) return;
+  const tierLabel = ({L1:'Internship', L2:'Full-time', L3:'Apprenticeship'})[m.tier];
+  document.getElementById('pdmTitle').textContent = partnerName + ' · ' + m.tier + ' ' + tierLabel;
+  document.getElementById('pdmSub').textContent = '90-day performance window';
+  document.getElementById('pdmLpBanner').style.display = m.lowPerf ? 'block' : 'none';
+  document.getElementById('pdmPlacement').textContent = m.placement;
+  document.getElementById('pdmOffer').textContent = m.offer;
+  document.getElementById('pdmResponse').textContent = m.response;
+  document.getElementById('pdmFeedback').textContent = m.feedback;
+  const ul = document.getElementById('pdmPlacements');
+  clearNode(ul);
+  m.placements.forEach(p => {
+    const li = document.createElement('li');
+    li.style.padding = '6px 0';
+    li.style.borderBottom = '1px solid var(--color-brightest-gray)';
+    li.textContent = '• ' + p;
+    ul.appendChild(li);
+  });
+  openModal('partnerDetailModal');
+}
+function setPdmWindow(days, btn){
+  document.querySelectorAll('.window-group button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pdmSub').textContent = (days === 0 ? 'All-time' : (days + '-day')) + ' performance window';
+}
+
+// === Toast & activity ===
+let toastTimer;
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('active');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('active'), 4000);
+}
+function addActivity(dotColor, date, text, sub){
+  const feed = document.getElementById('activityFeed');
+  if (!feed) return;
+  const item = el('div', { cls:'activity-item', style:{ background:'#fffbea' } }, [
+    el('div', { cls:'activity-dot', style:{ background:dotColor } }),
+    el('div', { cls:'activity-body' }, [
+      el('div', { cls:'activity-date', text:date }),
+      el('div', { cls:'activity-text', text:text }),
+      sub ? el('div', { cls:'activity-sub', text:sub }) : null
+    ])
+  ]);
+  feed.insertBefore(item, feed.firstChild);
+  setTimeout(() => { item.style.transition = 'background 800ms ease'; item.style.background = 'transparent'; }, 50);
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active'));
+  }
+});
+
+// ── Financial Hardship — sync from Student Portal via localStorage ──
+function updateFinancialHardshipCard() {
+  if (!window.CalbrightState) return;
+  var s = window.CalbrightState.getMariahStatus();
+  var statusEl = document.getElementById('fhStatus');
+  var statusTextEl = document.getElementById('fhStatusText');
+  var iconLock = statusEl ? statusEl.querySelector('.fh-icon-lock') : null;
+  var iconBell = statusEl ? statusEl.querySelector('.fh-icon-bell') : null;
+  var submittedRow = document.getElementById('fhSubmittedRow');
+  var submittedTimeEl = document.getElementById('fhSubmittedTime');
+  var matchRow = document.getElementById('fhMatchRow');
+  var matchCountEl = document.getElementById('fhMatchCount');
+  var detailsLink = document.getElementById('fhDetailsLink');
+  var card = document.getElementById('financialHardshipCard');
+  if (!statusEl) return;
+
+  if (iconLock) iconLock.style.display = 'none';
+  if (iconBell) iconBell.style.display = 'none';
+
+  if (s.status === 'none') {
+    statusTextEl.textContent = 'N/A';
+    statusEl.style.color = '';
+    submittedRow.style.display = 'none';
+    matchRow.style.display = 'none';
+    detailsLink.style.display = 'none';
+    if (card) card.style.borderLeft = '';
+  } else if (s.status === 'action_taken') {
+    if (iconLock) iconLock.style.display = '';
+    statusTextEl.textContent = 'Action Taken';
+    statusEl.style.color = 'var(--color-blue-purple)';
+    submittedRow.style.display = 'flex';
+    submittedTimeEl.textContent = window.CalbrightState.formatTimestamp(s.submittedAt);
+    matchRow.style.display = 'flex';
+    matchCountEl.textContent = s.matchCount + ' programs';
+    detailsLink.style.display = 'inline';
+    if (card) card.style.borderLeft = '3px solid var(--color-blue-purple)';
+  } else if (s.status === 'support_requested') {
+    if (iconBell) iconBell.style.display = '';
+    statusTextEl.textContent = 'Support Requested';
+    statusEl.style.color = 'var(--color-red)';
+    submittedRow.style.display = 'flex';
+    submittedTimeEl.textContent = window.CalbrightState.formatTimestamp(s.submittedAt);
+    matchRow.style.display = 'flex';
+    matchCountEl.textContent = s.matchCount + ' programs';
+    detailsLink.style.display = 'inline';
+    if (card) card.style.borderLeft = '3px solid var(--color-red)';
+  }
+}
+
+function openFinancialHardshipModal() {
+  if (!window.CalbrightState) return;
+  var s = window.CalbrightState.getMariahStatus();
+  document.getElementById('modalFhSubmitted').textContent = s.submittedAt ? window.CalbrightState.formatTimestamp(s.submittedAt) : '-';
+  document.getElementById('modalFhMatch').textContent = (s.matchCount || 0) + ' programs';
+  document.getElementById('modalFhFollowup').textContent = s.status === 'support_requested'
+    ? 'Yes · ' + window.CalbrightState.formatTimestamp(s.followupRequestedAt)
+    : 'No';
+  document.getElementById('modalFhActions').style.display = s.status === 'support_requested' ? 'block' : 'none';
+  openModal('financialHardshipModal');
+}
+
+function closeFinancialHardshipModal() {
+  closeModal('financialHardshipModal');
+}
+
+// Initial render + listen for changes from Student Portal
+updateFinancialHardshipCard();
+if (window.CalbrightState && typeof window.CalbrightState.onStateChange === 'function') {
+  window.CalbrightState.onStateChange(updateFinancialHardshipCard);
+}
+</script>
+
+<!-- Financial Hardship Details Modal -->
+<div class="modal-overlay" id="financialHardshipModal" onclick="if(event.target===this)closeFinancialHardshipModal()">
+  <div class="modal" style="max-width: 520px;">
+    <button class="modal-close-x" aria-label="Close" onclick="closeFinancialHardshipModal()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-title" style="padding-right: 32px;">Financial Hardship — Mariah Villalobos</div>
+    <div class="modal-subtitle">Privacy-scoped view for Student Success Coach</div>
+    <div style="margin-top: 18px;">
+      <!-- What Rondy can see -->
+      <div style="background: #F0FAF4; border-left: 3px solid var(--color-normal-green); border-radius: 0 8px 8px 0; padding: 14px 16px; margin-bottom: 14px;">
+        <div style="font-weight: 700; color: var(--color-dark-green); margin-bottom: 8px; font-size: 13px; display: inline-flex; align-items: center; gap: 6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          What you can see
+        </div>
+        <div class="appt-row"><span class="label">Submission timestamp</span><span id="modalFhSubmitted" style="font-weight: 700;">-</span></div>
+        <div class="appt-row"><span class="label">Programs matched</span><span id="modalFhMatch" style="font-weight: 700;">-</span></div>
+        <div class="appt-row"><span class="label">Follow-up requested</span><span id="modalFhFollowup" style="font-weight: 700;">-</span></div>
+      </div>
+
+      <!-- What Rondy can't see -->
+      <div style="background: #FEF2F2; border-left: 3px solid var(--color-dark-red); border-radius: 0 8px 8px 0; padding: 14px 16px; margin-bottom: 14px;">
+        <div style="font-weight: 700; color: var(--color-dark-red); margin-bottom: 8px; font-size: 13px; display: inline-flex; align-items: center; gap: 6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          What you cannot see
+        </div>
+        <div style="font-size: 12px; color: var(--color-dark-gray); line-height: 1.7;">
+          • Income details and figures<br>
+          • Uploaded W-2 and tax return documents<br>
+          • Specific program recommendations made to student
+        </div>
+      </div>
+
+      <!-- Why -->
+      <div style="background: #EEF2FF; border-left: 3px solid var(--color-blue-purple); border-radius: 0 8px 8px 0; padding: 14px 16px; margin-bottom: 14px;">
+        <div style="font-weight: 700; color: var(--color-blue-purple); margin-bottom: 6px; font-size: 13px;">Why?</div>
+        <div style="font-size: 12px; color: var(--color-dark-gray); line-height: 1.7;">
+          Financial data is classified as sensitive personal information under California CCPA and federal GLBA regulations. Access is limited to the automated eligibility engine — a deliberate data minimization design.
+        </div>
+      </div>
+
+      <!-- Suggested Actions (only shown when support_requested) -->
+      <div id="modalFhActions" style="display:none;">
+        <div style="font-weight: 700; color: var(--color-blue-purple); margin-bottom: 10px; font-size: 13px;">Suggested Next Steps</div>
+        <button class="btn btn-primary" style="display: flex; width: 100%; margin-bottom: 8px; align-items: center; justify-content: center; gap: 8px;" onclick="alert('Opening calendar to schedule 1:1...')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Schedule a 1:1 with Mariah
+        </button>
+        <button class="btn btn-secondary" style="display: flex; width: 100%; margin-bottom: 8px; align-items: center; justify-content: center; gap: 8px;" onclick="alert('Opening message composer...')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Send a follow-up message
+        </button>
+        <button class="btn btn-secondary" style="display: flex; width: 100%; align-items: center; justify-content: center; gap: 8px;" onclick="alert('Opening resource library...')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+          Share additional resources
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

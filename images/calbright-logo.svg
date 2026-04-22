@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 80" width="480" height="80">
+  <!-- C -->
+  <text x="0" y="52" font-family="'Lato','Helvetica','Arial',sans-serif" font-weight="900" font-size="48" fill="#1a1a1a" letter-spacing="3">CALBR</text>
+  <!-- California icon as I -->
+  <g transform="translate(218,2)">
+    <!-- Star -->
+    <polygon points="10,0 12,6.5 19,6.5 13.5,10.5 15.5,17 10,13 4.5,17 6.5,10.5 1,6.5 8,6.5" fill="#D34508"/>
+    <!-- California state -->
+    <path d="M7,19 C5.5,21 4.5,24 5,27 C5.5,30 6.5,33 6,36 C5.5,39 7,42 8.5,44.5 C10,47 9.5,50 10,52 C10.5,53.5 12,52.5 13,51 C14,49 14.5,46 14,43 C13.5,40 14,37 15,34 C16,31 15.5,28 14.5,25 C13.5,22 12.5,20 11,19 Z" fill="#F5BB11"/>
+  </g>
+  <!-- GHT -->
+  <text x="240" y="52" font-family="'Lato','Helvetica','Arial',sans-serif" font-weight="900" font-size="48" fill="#1a1a1a" letter-spacing="3">GHT</text>
+  <!-- COLLEGE -->
+  <text x="145" y="72" font-family="'Lato','Helvetica','Arial',sans-serif" font-weight="700" font-size="13" fill="#D34508" letter-spacing="5">COLLEGE</text>
+</svg>
